@@ -5,6 +5,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/analytics";
 import * as mammoth from "mammoth";
+import QRCode from "qrcode";
 
 // Firebase Configuration
 const firebaseConfig = {
@@ -407,6 +408,7 @@ export default function Page() {
   const [adminOperators, setAdminOperators] = useState([]);
   const [adminSubmissions, setAdminSubmissions] = useState([]);
   const [adminQuestions, setAdminQuestions] = useState([]);
+  const [adminQrCodeUrl, setAdminQrCodeUrl] = useState("");
   
   // Search states inside Admin
   const [adminSearchOp, setAdminSearchOp] = useState("");
@@ -624,11 +626,30 @@ export default function Page() {
     setCurrentView("home");
   };
 
+  // Generate QR Code of the app origin URL
+  const generateAdminQRCode = async () => {
+    try {
+      const url = window.location.origin;
+      const qrDataUrl = await QRCode.toDataURL(url, {
+        width: 600,
+        margin: 2,
+        color: {
+          dark: "#0f172a",
+          light: "#ffffff"
+        }
+      });
+      setAdminQrCodeUrl(qrDataUrl);
+    } catch (err) {
+      console.error("QR Code generation error:", err);
+    }
+  };
+
   // Admin load data
   const loadAdminDashboard = () => {
     loadAdminOperators();
     loadAdminLeaderboard();
     loadAdminQuestions();
+    generateAdminQRCode();
   };
 
   const loadAdminOperators = async () => {
@@ -1102,6 +1123,23 @@ export default function Page() {
               <span class="material-symbols-outlined text-base">quiz</span> Quản lý Câu hỏi
             </button>
           </nav>
+
+          {/* QR Code Quick Action */}
+          {adminQrCodeUrl && (
+            <div class="bg-white/60 border border-slate-200/60 p-4 rounded-xl space-y-3 shadow-sm text-center">
+              <div class="text-[10px] text-slate-400 font-mono uppercase tracking-wider font-bold">MÃ QR TRÒ CHƠI</div>
+              <div class="bg-white p-2 rounded-lg inline-block border border-slate-100 shadow-inner">
+                <img src={adminQrCodeUrl} alt="Game QR Code" class="w-28 h-28 mx-auto" />
+              </div>
+              <a 
+                href={adminQrCodeUrl} 
+                download="past_portal_qr_game.png"
+                class="w-full py-2 bg-amber-500 hover:bg-amber-600 text-white font-headline font-bold rounded-lg transition-all tracking-wider text-[10px] flex items-center justify-center gap-1.5 uppercase shadow-sm"
+              >
+                <span class="material-symbols-outlined text-sm">download</span> Tải mã QR
+              </a>
+            </div>
+          )}
 
           <div class="space-y-3 pt-6 border-t border-slate-200">
             <div class="text-[10px] text-slate-400 font-mono">HỆ THỐNG HOẠT ĐỘNG</div>
