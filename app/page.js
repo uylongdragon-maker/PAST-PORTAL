@@ -560,11 +560,24 @@ export default function Page() {
   // Load Leaderboard data
   const loadLeaderboardData = async () => {
     try {
-      const snap = await db.collection("quiz_submissions").orderBy("accuracy", "desc").orderBy("timeElapsed", "asc").get();
+      const snap = await db.collection("quiz_submissions").get();
       const list = [];
       snap.forEach(doc => {
         list.push({ id: doc.id, ...doc.data() });
       });
+      
+      // Sort by accuracy (descending), then timeElapsed (ascending) in memory to avoid Firestore index requirement
+      list.sort((a, b) => {
+        const accuracyA = a.accuracy ?? 0;
+        const accuracyB = b.accuracy ?? 0;
+        if (accuracyB !== accuracyA) {
+          return accuracyB - accuracyA;
+        }
+        const timeA = a.timeElapsed ?? 999999;
+        const timeB = b.timeElapsed ?? 999999;
+        return timeA - timeB;
+      });
+
       setLeaderboardData(list);
     } catch (e) {
       console.error(e);
