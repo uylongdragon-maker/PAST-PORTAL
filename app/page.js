@@ -796,7 +796,55 @@ export default function Page() {
     setRegLoading(true);
 
     const emailClean = regEmail.trim().toLowerCase();
+    const phoneClean = regPhone.trim();
+
     try {
+      // 1. Verify if this email or phone number has already participated
+      // Find all operators with this email or phone number
+      const opsByEmail = await db.collection("operators").where("email", "==", emailClean).get();
+      const opsByPhone = await db.collection("operators").where("phone", "==", phoneClean).get();
+
+      const operatorIds = new Set();
+      const emails = new Set([emailClean]);
+
+      opsByEmail.forEach(doc => {
+        operatorIds.add(doc.data().operatorId);
+        if (doc.data().email) emails.add(doc.data().email.toLowerCase());
+      });
+      opsByPhone.forEach(doc => {
+        operatorIds.add(doc.data().operatorId);
+        if (doc.data().email) emails.add(doc.data().email.toLowerCase());
+      });
+
+      let alreadySubmitted = false;
+      
+      // Check submissions by email
+      for (const email of emails) {
+        const subSnap = await db.collection("quiz_submissions").where("email", "==", email).get();
+        if (!subSnap.empty) {
+          alreadySubmitted = true;
+          break;
+        }
+      }
+      
+      // Check submissions by operatorId
+      if (!alreadySubmitted) {
+        for (const opId of operatorIds) {
+          const subSnap = await db.collection("quiz_submissions").where("operatorId", "==", opId).get();
+          if (!subSnap.empty) {
+            alreadySubmitted = true;
+            break;
+          }
+        }
+      }
+
+      if (alreadySubmitted) {
+        showToast("Bạn đã tham gia rồi!", "warning");
+        setRegLoading(false);
+        return;
+      }
+
+      // 2. Proceed with login or registration
       const snap = await db.collection("operators").where("email", "==", emailClean).limit(1).get();
 
       if (!snap.empty) {
@@ -813,7 +861,7 @@ export default function Page() {
         const newUser = {
           name: regName.trim(),
           email: emailClean,
-          phone: regPhone.trim(),
+          phone: phoneClean,
           operatorId,
           createdAt: firebase.firestore.FieldValue.serverTimestamp()
         };
@@ -853,6 +901,53 @@ export default function Page() {
     }
 
     try {
+      // Check if current user has already participated (just in case they logged in but somehow bypassed check, or played in another session)
+      const emailClean = currentUser.email.trim().toLowerCase();
+      const phoneClean = (currentUser.phone || "").trim();
+
+      const opsByEmail = await db.collection("operators").where("email", "==", emailClean).get();
+      let opsByPhoneSnap = null;
+      if (phoneClean) {
+        opsByPhoneSnap = await db.collection("operators").where("phone", "==", phoneClean).get();
+      }
+
+      const operatorIds = new Set([currentUser.operatorId]);
+      const emails = new Set([emailClean]);
+
+      opsByEmail.forEach(doc => {
+        operatorIds.add(doc.data().operatorId);
+        if (doc.data().email) emails.add(doc.data().email.toLowerCase());
+      });
+      if (opsByPhoneSnap) {
+        opsByPhoneSnap.forEach(doc => {
+          operatorIds.add(doc.data().operatorId);
+          if (doc.data().email) emails.add(doc.data().email.toLowerCase());
+        });
+      }
+
+      let alreadySubmitted = false;
+      for (const email of emails) {
+        const subSnap = await db.collection("quiz_submissions").where("email", "==", email).get();
+        if (!subSnap.empty) {
+          alreadySubmitted = true;
+          break;
+        }
+      }
+      if (!alreadySubmitted) {
+        for (const opId of operatorIds) {
+          const subSnap = await db.collection("quiz_submissions").where("operatorId", "==", opId).get();
+          if (!subSnap.empty) {
+            alreadySubmitted = true;
+            break;
+          }
+        }
+      }
+
+      if (alreadySubmitted) {
+        showToast("Bạn đã tham gia rồi!", "warning");
+        return;
+      }
+
       // Questions are already seeded on mount; loading directly to speed up transition
       const snap = await db.collection("questions").orderBy("createdAt", "asc").get();
       const allQs = [];
@@ -916,6 +1011,7 @@ export default function Page() {
       operatorId: currentUser.operatorId,
       name: currentUser.name,
       email: currentUser.email,
+      phone: currentUser.phone || "",
       accuracy,
       correctCount,
       totalQuestions,
@@ -1250,7 +1346,10 @@ export default function Page() {
                         return (
                           <tr key={sub.id} class="admin-table-row border-b border-slate-800/40">
                             <td class="p-4 font-mono font-bold text-amber-500">{sub.operatorId}</td>
-                            <td class="p-4 font-semibold text-slate-700">{sub.name}</td>
+                            <td class="p-4 font-semibold text-slate-700">
+                              <div>{sub.name}</div>
+                              <div class="text-[10px] text-slate-400 font-mono mt-0.5">{sub.email} {sub.phone ? `| ${sub.phone}` : ""}</div>
+                            </td>
                             <td class="p-4 font-semibold text-slate-700">{sub.accuracy}% ({sub.correctCount}/{sub.totalQuestions})</td>
                             <td class="p-4 font-mono text-slate-505">{sub.timeFormatted}</td>
                             <td class="p-4 text-slate-500 font-mono">{dateStr}</td>
