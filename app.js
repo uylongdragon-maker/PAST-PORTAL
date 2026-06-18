@@ -181,6 +181,182 @@ const defaultQuestions = [
       D: "Cả A, B, C đều đúng"
     },
     correct: "D"
+  },
+  {
+    text: "Một người bạn của bạn liên tục thể hiện hành vi bạo lực và kích động. Điều này có thể là dấu hiệu gì?",
+    desc: "Nhận biết biểu hiện hành vi thay đổi do chất kích thích.",
+    options: {
+      A: "Người đó đang trong tình trạng căng thẳng của bản thân",
+      B: "Người đó có thể đang sử dụng ma túy hoặc các chất kích thích",
+      C: "Người đó đang gặp phải vấn đề về gia đình nhưng không liên quan đến ma túy",
+      D: "Đáp án A, B là đúng"
+    },
+    correct: "D"
+  },
+  {
+    text: "Trong tình huống bạn phát hiện có người sử dụng ma túy trong trường học, bạn cần làm gì ngay lập tức?",
+    desc: "Hành động khẩn cấp đảm bảo an toàn học đường.",
+    options: {
+      A: "Báo ngay cho giáo viên hoặc nhà trường để xử lý kịp thời",
+      B: "Bỏ qua và không can thiệp",
+      C: "Nói chuyện riêng với người đó",
+      D: "Tự giải quyết mà không cần sự giúp đỡ"
+    },
+    correct: "A"
+  },
+  {
+    text: "Nếu bạn nghe thông tin từ bạn bè rằng họ sử dụng ma túy, bạn sẽ làm gì?",
+    desc: "Ứng xử phù hợp khi nghe thông tin từ bạn bè sử dụng ma túy.",
+    options: {
+      A: "Đưa ra lời khuyên và khuyến khích họ ngừng sử dụng",
+      B: "Báo cho thầy cô, gia đình, cơ quan chức năng gần nhất",
+      C: "Không quan tâm vì đó là chuyện của họ",
+      D: "Cả A và B đều đúng"
+    },
+    correct: "D"
+  },
+  {
+    text: "Nếu bạn nghi ngờ rằng bạn bè đang sử dụng ma túy, nhưng chưa có căn cứ, bạn sẽ làm gì?",
+    desc: "Tìm kiếm sự giúp đỡ từ người có trách nhiệm.",
+    options: {
+      A: "Thảo luận trực tiếp với người đó về nghi ngờ của mình",
+      B: "Báo cáo với giáo viên hoặc gia đình để tìm kiếm sự giúp đỡ",
+      C: "Không làm gì và để mọi thứ tự nhiên",
+      D: "Cố gắng tìm kiếm thêm bằng chứng trước khi làm gì"
+    },
+    correct: "B"
+  },
+  {
+    text: "Trong trường hợp người bạn của bạn đang lén lút, bí mật cất giấu đồ vật nghi vấn là chất ma túy, bạn nên làm gì để giúp đỡ họ?",
+    desc: "Xử lý thông tin phát hiện chất nghi vấn.",
+    options: {
+      A: "Đưa họ đến cơ quan y tế hoặc tìm kiếm sự giúp đỡ chuyên môn",
+      B: "Để họ tự giải quyết và không can thiệp",
+      C: "Báo cho thầy cô về phát hiện của mình",
+      D: "Cố gắng khuyên nhủ mà không cần sự giúp đỡ của người lớn"
+    },
+    correct: "C"
+  },
+  {
+    text: "Nếu bạn phát hiện bạn thân bị ngất xỉu do sử dụng ma túy, bạn sẽ làm gì?",
+    desc: "Sơ cấp cứu khẩn cấp cho người bị ngộ độc hoặc sốc thuốc.",
+    options: {
+      A: "Tự chăm sóc và chờ đợi họ tỉnh dậy",
+      B: "Gọi ngay cho cấp cứu hoặc bác sĩ để can thiệp kịp thời",
+      C: "Gọi báo Cảnh sát về phát hiện của mình",
+      D: "Cả B và C đều đúng"
+    },
+    correct: "D"
+  },
+  {
+    text: "Nếu bạn thấy một người bạn bị ảnh hưởng bởi ma túy và có dấu hiệu ngừng thở, bạn nên làm gì?",
+    desc: "Hành vi cứu trợ khẩn cấp đối với người suy hô hấp.",
+    options: {
+      A: "Đừng làm gì, để họ tự phục hồi",
+      B: "Gọi ngay cấp cứu và thực hiện các biện pháp sơ cứu nếu có thể",
+      C: "Cố gắng tự giải quyết vấn đề mà không cần sự giúp đỡ",
+      D: "Chờ đợi họ tự tỉnh lại"
+    },
+    correct: "B"
+  },
+  {
+    text: "Nếu bạn nghi ngờ người thân mang theo ma túy, bạn nên làm gì?",
+    desc: "Ứng xử trách nhiệm đối với nghi ngờ người thân sử dụng.",
+    options: {
+      A: "Quan sát hành vi của họ",
+      B: "Tìm hiểu thông tin về ma túy",
+      C: "Báo cho gia đình hoặc cơ quan chức năng",
+      D: "Tất cả các đáp án trên"
+    },
+    correct: "D"
+  },
+  {
+    text: "Làm thế nào để không bị bạn bè rủ rê, lôi kéo vào con đường sử dụng ma túy:",
+    desc: "Rèn luyện bản lĩnh từ chối và phòng chống lôi kéo.",
+    options: {
+      A: "Không quan hệ bạn bè",
+      B: "Không nghe theo sự cám dỗ, mời mọc, thách thức của bạn bè.",
+      C: "Không tập hút thuốc lá điện tử",
+      D: "Tất cả các đáp án trên"
+    },
+    correct: "B"
+  },
+  {
+    text: "Nếu bạn thấy người lạ bán ma túy gần trường học, bạn nên làm gì?",
+    desc: "Tố giác tội phạm ma túy quanh khu vực học đường.",
+    options: {
+      A: "Báo cho giáo viên hoặc ban giám hiệu",
+      B: "Báo cho cơ quan chức năng",
+      C: "Không can thiệp để tránh rắc rối",
+      D: "Cả A và B đều đúng"
+    },
+    correct: "D"
+  },
+  {
+    text: "Nếu bạn được mời thử ma túy tại một bữa tiệc, bạn nên làm gì?",
+    desc: "Cách ứng xử kiên quyết từ chối lời mời sử dụng chất kích thích.",
+    options: {
+      A: "Từ chối và rời khỏi bữa tiệc",
+      B: "Thử một chút để không bị lạc lõng",
+      C: "Nhờ bạn bè giúp đỡ",
+      D: "Tất cả các đáp án trên"
+    },
+    correct: "A"
+  },
+  {
+    text: "Nếu một người bị bắt khi đang mang ma túy trong người nhưng khẳng định là không biết đó là ma túy, họ có thể bị xử lý như thế nào?",
+    desc: "Kiến thức pháp luật về tội tàng trữ trái phép chất ma túy.",
+    options: {
+      A: "Không bị xử lý vì không biết",
+      B: "Bị xử lý về tội tàng trữ ma túy nếu chứng minh được ma túy là của họ",
+      C: "Không bị xử lý nếu chứng minh được họ không phải người mang ma túy",
+      D: "Bị xử lý nhẹ vì thiếu hiểu biết"
+    },
+    correct: "B"
+  },
+  {
+    text: "Nếu bạn phát hiện bạn bè mình sử dụng ma túy nhưng không can thiệp, bạn sẽ chịu trách nhiệm gì?",
+    desc: "Trách nhiệm pháp lý liên quan đến việc không tố giác tội phạm ma túy.",
+    options: {
+      A: "Không chịu trách nhiệm vì đó là quyền của họ",
+      B: "Có thể chịu trách nhiệm về việc không báo cáo cho người có thẩm quyền",
+      C: "Bạn sẽ không phải chịu trách nhiệm gì",
+      D: "Bạn chỉ phải chịu trách nhiệm nếu bạn tham gia vào việc sử dụng ma túy"
+    },
+    correct: "B"
+  },
+  {
+    text: "Nếu bạn nghe tin đồn về một nhóm người đang tổ chức bán ma túy trong trường học, bạn nên làm gì?",
+    desc: "Hành động đúng đắn khi tiếp nhận thông tin tội phạm ma túy học đường.",
+    options: {
+      A: "Không làm gì và giữ im lặng",
+      B: "Báo ngay cho nhà trường hoặc cơ quan chức năng để họ điều tra",
+      C: "Tìm hiểu thêm và tham gia cùng họ",
+      D: "Khuyến khích bạn bè sử dụng ma túy để hiểu cảm giác"
+    },
+    correct: "B"
+  },
+  {
+    text: "Nếu một người bạn của bạn yêu cầu bạn giúp giấu ma túy trong cặp sách, bạn nên làm gì?",
+    desc: "Kiên quyết từ chối đồng lõa tàng trữ và vận chuyển ma túy trái phép.",
+    options: {
+      A: "Cứ làm theo yêu cầu của bạn để giữ tình bạn",
+      B: "Báo ngay cho giáo viên hoặc cơ quan Công an về tình huống này",
+      C: "Không làm gì và để họ tự quyết định",
+      D: "Giấu ma túy vì nghĩ rằng không có gì nghiêm trọng"
+    },
+    correct: "B"
+  },
+  {
+    text: "Khi biết một bạn học đang sử dụng ma túy nhưng bạn không chắc chắn, bạn nên làm gì?",
+    desc: "Báo cáo xác minh để giúp đỡ bạn học kịp thời.",
+    options: {
+      A: "Để họ tự quyết định việc sử dụng",
+      B: "Khuyến khích bạn ấy tiếp tục thử nghiệm ma túy",
+      C: "Tìm kiếm sự giúp đỡ từ giáo viên hoặc phụ huynh để kiểm tra thông tin",
+      D: "Giữ im lặng và không làm gì"
+    },
+    correct: "C"
   }
 ];
 
@@ -360,20 +536,17 @@ function shuffle(array) {
 // Seed questions into firestore
 async function seedDefaultQuestions() {
   const snap = await db.collection("questions").get();
-  let needReSeed = snap.empty;
+  // We need to re-seed if the collection is empty, if it has less than 30 questions, or if the old traffic safety questions are present.
+  let needReSeed = snap.empty || snap.size < 30;
   
-  if (!snap.empty) {
-    const firstDoc = snap.docs[0].data();
-    // Check if the old traffic safety question is present, if so, re-seed with the drug prevention questions
-    if (firstDoc.text && (firstDoc.text.includes("xe cứu thương") || firstDoc.text.includes("ngạt nước") || firstDoc.text.includes("hỏa hoạn"))) {
-      needReSeed = true;
-      const batch = db.batch();
-      snap.forEach(doc => {
-        batch.delete(doc.ref);
-      });
-      await batch.commit();
-      console.log("Cleared old safety questions.");
-    }
+  if (!snap.empty && (needReSeed || (snap.docs[0].data().text && (snap.docs[0].data().text.includes("xe cứu thương") || snap.docs[0].data().text.includes("ngạt nước") || snap.docs[0].data().text.includes("hỏa hoạn"))))) {
+    needReSeed = true;
+    const batch = db.batch();
+    snap.forEach(doc => {
+      batch.delete(doc.ref);
+    });
+    await batch.commit();
+    console.log("Cleared old/incomplete questions for re-seeding.");
   }
 
   if (needReSeed) {
@@ -386,7 +559,7 @@ async function seedDefaultQuestions() {
       });
     });
     await batch.commit();
-    console.log("Seeded new default questions.");
+    console.log("Seeded default questions.");
   }
 }
 
