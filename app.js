@@ -1007,6 +1007,134 @@ document.getElementById("btn-home-enlist").addEventListener("click", () => showV
 document.getElementById("btn-sidebar-login").addEventListener("click", () => showView("register"));
 document.getElementById("btn-sidebar-admin").addEventListener("click", () => showView("admin-dashboard"));
 
+// ==================== DOCX IMPORT ENGINE ====================
+
+// DOCX file trigger click
+document.getElementById("btn-import-docx-trigger").addEventListener("click", () => {
+  document.getElementById("admin-import-docx").click();
+});
+
+// Parse DOCX plain text using regex matching questions, options, and key
+function parseDocxQuestions(text) {
+  const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+  const questions = [];
+  let currentQ = null;
+
+  for (let line of lines) {
+    // Check if line marks a new question, e.g. "Câu X: Nội dung" or "1. Câu hỏi"
+    const qMatch = line.match(/^(?:Câu|Question|\d+)\s*\d*[:\.]?\s*(.*)/i);
+    const isQuestionStart = line.toLowerCase().startsWith("câu") || line.toLowerCase().startsWith("question") || /^\d+[:\.]/.test(line);
+    
+    if (isQuestionStart && qMatch && qMatch[1]) {
+      // If we already have a completed question, push it
+      if (currentQ && currentQ.text && currentQ.options.A && currentQ.options.B && currentQ.options.C && currentQ.options.D && currentQ.correct) {
+        questions.push(currentQ);
+      }
+      currentQ = {
+        text: qMatch[1].trim(),
+        desc: "Phân tích kỹ lưỡng dữ liệu chuyên án trước khi đưa ra quyết định.",
+        options: {},
+        correct: ""
+      };
+      continue;
+    }
+
+    if (!currentQ) continue;
+
+    // Check for custom description/hint
+    const descMatch = line.match(/^(?:Mô tả|Gợi ý|Hint|Desc)[:\.]?\s*(.*)/i);
+    if (descMatch) {
+      currentQ.desc = descMatch[1].trim();
+      continue;
+    }
+
+    // Check for options A, B, C, D
+    const optAMatch = line.match(/^A[:\.\)]\s*(.*)/i);
+    if (optAMatch) { currentQ.options.A = optAMatch[1].trim(); continue; }
+
+    const optBMatch = line.match(/^B[:\.\)]\s*(.*)/i);
+    if (optBMatch) { currentQ.options.B = optBMatch[1].trim(); continue; }
+
+    const optCMatch = line.match(/^C[:\.\)]\s*(.*)/i);
+    if (optCMatch) { currentQ.options.C = optCMatch[1].trim(); continue; }
+
+    const optDMatch = line.match(/^D[:\.\)]\s*(.*)/i);
+    if (optDMatch) { currentQ.options.D = optDMatch[1].trim(); continue; }
+
+    // Check for correct answer key
+    const correctMatch = line.match(/^(?:Đáp án|Đáp án đúng|Key|Answer)[:\.]?\s*([A-D])/i);
+    if (correctMatch) {
+      currentQ.correct = correctMatch[1].toUpperCase();
+      continue;
+    }
+  }
+
+  // Push the final question
+  if (currentQ && currentQ.text && currentQ.options.A && currentQ.options.B && currentQ.options.C && currentQ.options.D && currentQ.correct) {
+    questions.push(currentQ);
+  }
+
+  return questions;
+}
+
+// DOCX file input handler
+document.getElementById("admin-import-docx").addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(evt) {
+    const arrayBuffer = evt.target.result;
+    
+    // Call Mammoth to extract text
+    mammoth.extractRawText({ arrayBuffer: arrayBuffer })
+      .then(async function(result) {
+        const text = result.value;
+        const parsedQs = parseDocxQuestions(text);
+        
+        if (parsedQs.length === 0) {
+          showToast("Không tìm thấy câu hỏi đúng định dạng trong tệp Word!", "error");
+          return;
+        }
+
+        if (confirm(`Tìm thấy ${parsedQs.length} câu hỏi hợp lệ từ file Word. Tiến hành tải lên cơ sở dữ liệu?`)) {
+          const btnTrigger = document.getElementById("btn-import-docx-trigger");
+          const originalText = btnTrigger.innerHTML;
+          btnTrigger.disabled = true;
+          btnTrigger.innerHTML = `<span class="material-symbols-outlined animate-spin text-base">refresh</span> ĐANG TẢI LÊN...`;
+
+          try {
+            const batch = db.batch();
+            parsedQs.forEach(q => {
+              const ref = db.collection("questions").doc();
+              batch.set(ref, {
+                ...q,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+              });
+            });
+            
+            await batch.commit();
+            showToast(`Nhập thành công ${parsedQs.length} câu hỏi mới vào ngân hàng đề!`, "done");
+            loadAdminQuestions();
+          } catch (err) {
+            console.error("Batch upload error:", err);
+            showToast("Lỗi đẩy dữ liệu lên cơ sở dữ liệu!", "error");
+          } finally {
+            btnTrigger.disabled = false;
+            btnTrigger.innerHTML = originalText;
+            e.target.value = ""; // clear input
+          }
+        }
+      })
+      .catch(function(err) {
+        console.error(err);
+        showToast("Lỗi phân tích tệp DOCX!", "error");
+      });
+  };
+  
+  reader.readAsArrayBuffer(file);
+});
+
 // App loader initialization
 document.addEventListener("DOMContentLoaded", async () => {
   updateSessionUI();

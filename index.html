@@ -28,6 +28,9 @@
   
   <!-- Custom Glassmorphism Styles -->
   <link rel="stylesheet" href="styles.css" />
+  
+  <!-- Mammoth.js for client-side Word Document parsing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 font-body min-h-screen flex flex-col antialiased selection:bg-sky-100 selection:text-slate-900 overflow-x-hidden">
 
@@ -624,9 +627,17 @@
 
       <!-- Section: Questions Tab -->
       <div id="admin-tab-questions" class="admin-tab-content hidden space-y-6">
-        <div class="border-b border-slate-800 pb-4">
-          <h2 class="font-headline text-2xl font-black text-white uppercase tracking-tight">Kho tài liệu Chuyên án</h2>
-          <p class="text-xs text-slate-400">Quản lý câu hỏi kiểm tra nghiệp vụ an ninh đô thị.</p>
+        <div class="border-b border-slate-800 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <h2 class="font-headline text-2xl font-black text-white uppercase tracking-tight">Kho tài liệu Chuyên án</h2>
+            <p class="text-xs text-slate-400">Quản lý câu hỏi kiểm tra nghiệp vụ an ninh đô thị.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="file" id="admin-import-docx" accept=".docx" class="hidden" />
+            <button id="btn-import-docx-trigger" class="btn-glass px-4 py-2.5 rounded text-xs font-bold text-sky-400 hover:text-sky-300 border border-sky-850 uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+              <span class="material-symbols-outlined text-base">cloud_upload</span> Nhập đề từ file .docx
+            </button>
+          </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
