@@ -1019,19 +1019,55 @@ function parseDocxQuestions(text) {
   const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
   const questions = [];
   let currentQ = null;
+  let pendingQuestionText = false;
 
   for (let line of lines) {
-    // Check if line marks a new question, e.g. "Câu X: Nội dung" or "1. Câu hỏi"
-    const qMatch = line.match(/^(?:Câu|Question|\d+)\s*\d*[:\.]?\s*(.*)/i);
-    const isQuestionStart = line.toLowerCase().startsWith("câu") || line.toLowerCase().startsWith("question") || /^\d+[:\.]/.test(line);
-    
-    if (isQuestionStart && qMatch && qMatch[1]) {
-      // If we already have a completed question, push it
+    // Check standalone number first (e.g. "10." or "10")
+    const qStandaloneNumMatch = line.match(/^(\d+)\s*[\.\t]?$/);
+    if (qStandaloneNumMatch) {
+      if (currentQ && currentQ.text && currentQ.options.A && currentQ.options.B && currentQ.options.C && currentQ.options.D && currentQ.correct) {
+        questions.push(currentQ);
+      }
+      pendingQuestionText = true;
+      currentQ = null; // reset currentQ to wait for text
+      continue;
+    }
+
+    // Check if we are waiting for question text after a standalone number
+    if (pendingQuestionText) {
+      currentQ = {
+        text: line,
+        desc: "Phân tích kỹ lưỡng dữ liệu chuyên án trước khi đưa ra quyết định.",
+        options: {},
+        correct: ""
+      };
+      pendingQuestionText = false;
+      continue;
+    }
+
+    // Check if line marks a new question
+    // Case 1: starts with "Câu 10:" or "Question 10."
+    const qLabelMatch = line.match(/^(?:Câu|Question)\s*\d+[:\t\.]+\s*(.*)/i);
+    // Case 2: starts with "10." or "10\t"
+    const qNumMatch = line.match(/^(\d+)\s*[\.\t]+\s*(.*)/);
+
+    if (qLabelMatch) {
       if (currentQ && currentQ.text && currentQ.options.A && currentQ.options.B && currentQ.options.C && currentQ.options.D && currentQ.correct) {
         questions.push(currentQ);
       }
       currentQ = {
-        text: qMatch[1].trim(),
+        text: qLabelMatch[1].trim(),
+        desc: "Phân tích kỹ lưỡng dữ liệu chuyên án trước khi đưa ra quyết định.",
+        options: {},
+        correct: ""
+      };
+      continue;
+    } else if (qNumMatch) {
+      if (currentQ && currentQ.text && currentQ.options.A && currentQ.options.B && currentQ.options.C && currentQ.options.D && currentQ.correct) {
+        questions.push(currentQ);
+      }
+      currentQ = {
+        text: qNumMatch[2].trim(),
         desc: "Phân tích kỹ lưỡng dữ liệu chuyên án trước khi đưa ra quyết định.",
         options: {},
         correct: ""
@@ -1042,27 +1078,27 @@ function parseDocxQuestions(text) {
     if (!currentQ) continue;
 
     // Check for custom description/hint
-    const descMatch = line.match(/^(?:Mô tả|Gợi ý|Hint|Desc)[:\.]?\s*(.*)/i);
+    const descMatch = line.match(/^(?:Mô tả|Gợi ý|Hint|Desc)[:\t\.]?\s*(.*)/i);
     if (descMatch) {
       currentQ.desc = descMatch[1].trim();
       continue;
     }
 
     // Check for options A, B, C, D
-    const optAMatch = line.match(/^A[:\.\)]\s*(.*)/i);
+    const optAMatch = line.match(/^A[:\.\)\t]\s*(.*)/i);
     if (optAMatch) { currentQ.options.A = optAMatch[1].trim(); continue; }
 
-    const optBMatch = line.match(/^B[:\.\)]\s*(.*)/i);
+    const optBMatch = line.match(/^B[:\.\)\t]\s*(.*)/i);
     if (optBMatch) { currentQ.options.B = optBMatch[1].trim(); continue; }
 
-    const optCMatch = line.match(/^C[:\.\)]\s*(.*)/i);
+    const optCMatch = line.match(/^C[:\.\)\t]\s*(.*)/i);
     if (optCMatch) { currentQ.options.C = optCMatch[1].trim(); continue; }
 
-    const optDMatch = line.match(/^D[:\.\)]\s*(.*)/i);
+    const optDMatch = line.match(/^D[:\.\)\t]\s*(.*)/i);
     if (optDMatch) { currentQ.options.D = optDMatch[1].trim(); continue; }
 
     // Check for correct answer key
-    const correctMatch = line.match(/^(?:Đáp án|Đáp án đúng|Key|Answer)[:\.]?\s*([A-D])/i);
+    const correctMatch = line.match(/^(?:Đáp án|Đáp án đúng|Key|Answer)[:\t\.]?\s*([A-D])/i);
     if (correctMatch) {
       currentQ.correct = correctMatch[1].toUpperCase();
       continue;
