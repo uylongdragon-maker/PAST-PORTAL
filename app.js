@@ -29,59 +29,158 @@ let quizTimeElapsed = 0; // in ms
 // Default Questions Data to seed if collection is empty
 const defaultQuestions = [
   {
-    text: "Khi thấy xe cứu thương đang phát tín hiệu ưu tiên đi làm nhiệm vụ, người tham gia giao thông phải thực hiện hành động nào?",
-    desc: "Đảm bảo tuân thủ nghiêm ngặt Luật giao thông đường bộ về quyền nhường đường xe ưu tiên.",
+    text: "Tác dụng của việc tuyên truyền về tác hại của ma túy là gì?",
+    desc: "Nâng cao nhận thức phòng ngừa tệ nạn ma túy.",
     options: {
-      A: "Tăng tốc độ để chạy nhanh trước xe cứu thương.",
-      B: "Giảm tốc độ, tránh sát lề đường bên phải hoặc dừng lại nhường đường, tuyệt đối không cản trở.",
-      C: "Bấm còi liên tục và chạy song song để dẫn đường hộ tống.",
-      D: "Chuyển sang làn đường bên trái để nhường làn bên phải cho xe cấp cứu."
+      A: "Nâng cao nhận thức việc sử dụng ma túy",
+      B: "Giảm tỷ lệ sử dụng ma túy và nâng cao nhận thức cộng đồng",
+      C: "Phát huy sức mạnh của cộng đồng trong phòng, chống ma túy",
+      D: "Cả B và C đều đúng"
+    },
+    correct: "D"
+  },
+  {
+    text: "Quá trình nghiện ma túy thường trải qua những giai đoạn nào?",
+    desc: "Tìm hiểu tiến trình lệ thuộc chất gây nghiện.",
+    options: {
+      A: "Lạm dụng ma túy => sử dụng ma túy => lệ thuộc ma túy.",
+      B: "Sử dụng ma túy => lạm dụng ma túy => lệ thuộc ma túy.",
+      C: "Lệ thuộc ma túy => sử dụng ma túy => lạm dụng ma túy.",
+      D: "Sử dụng ma túy => lệ thuộc ma túy => lạm dụng ma túy."
     },
     correct: "B"
   },
   {
-    text: "Quy trình sơ cứu ban đầu chuẩn xác nhất khi phát hiện một người bị ngạt nước (đuối nước) sau khi đưa lên bờ?",
-    desc: "Thao tác hồi sức tim phổi sơ cấp cứu cơ bản quyết định trực tiếp tới tính mạng nạn nhân.",
+    text: "Dấu hiệu nào sau đây có thể nhận biết người nghiện Heroine?",
+    desc: "Các biểu hiện lâm sàng đặc trưng của người sử dụng Heroine.",
     options: {
-      A: "Cõng ngược nạn nhân chạy vòng quanh để nôn nước ra ngoài.",
-      B: "Đặt nằm ngửa, kiểm tra nhịp thở. Nếu ngừng thở, thực hiện ép tim ngoài lồng ngực (30 lần) kết hợp thổi ngạt (2 lần), liên tục cho đến khi có y tế hỗ trợ và gọi ngay 115.",
-      C: "Đắp chăn sưởi ấm ngay lập tức mà không cần kiểm tra hô hấp hay ép tim.",
-      D: "Đổ nước ấm vào miệng nạn nhân để làm ấm cơ thể bên trong."
+      A: "Ngáp vặt, nổi da gà, sợ nước, tiêu chảy, lở loét",
+      B: "Mắt đỏ, môi thâm, ngáp vặt, sợ nước",
+      C: "Răng vỡ vụn, mắt lờ đờ",
+      D: "Răng đen, môi lở loét"
     },
     correct: "B"
   },
   {
-    text: "Khi xảy ra hỏa hoạn ở nhà cao tầng, phương án thoát nạn nào sau đây được xem là AN TOÀN nhất?",
-    desc: "Quy tắc di chuyển trong không gian có khói độc và lửa cô lập.",
+    text: "Khi sử dụng ma túy, một trong những dấu hiệu thường thấy về mặt lời nói là gì?",
+    desc: "Sự thay đổi trong giao tiếp và phát ngôn của người sử dụng chất kích thích.",
     options: {
-      A: "Sử dụng thang máy tòa nhà để di chuyển xuống sảnh trệt nhanh nhất.",
-      B: "Di chuyển bằng thang bộ thoát hiểm, dùng khăn ướt che mũi miệng, đi khom lưng thấp hoặc bò sát mặt đất để tránh khói độc.",
-      C: "Chạy ngay lên sân thượng tòa nhà và nhảy xuống túi khí cứu hộ bên dưới.",
-      D: "Mở to tất cả các cửa ra vào để sảnh hành lang hút gió thoáng mát."
+      A: "Lời nói hoảng loạn, dễ bị kích động",
+      B: "Nói chuyện nhanh, khó kiểm soát và không có sự mạch lạc",
+      C: "U uất, ít nói, ngại giao tiếp",
+      D: "Cả A, B, C đều đúng"
     },
-    correct: "B"
+    correct: "D"
   },
   {
-    text: "Nhịp độ ép tim chuẩn xác nhất trong kỹ năng hồi sức tim phổi (CPR) cho người lớn là bao nhiêu lần/phút?",
-    desc: "Tần số ép tim ngoài lồng ngực để kích thích tuần hoàn nhân tạo tối ưu.",
+    text: "Người sử dụng ma túy bằng hình thức tiêm chích có thể có dấu hiệu nào trên cơ thể?",
+    desc: "Các dấu hiệu tổn thương vật lý trên bề mặt da.",
     options: {
-      A: "60 - 80 lần/phút.",
-      B: "100 - 120 lần/phút.",
-      C: "140 - 160 lần/phút.",
-      D: "Tùy thuộc vào thể trạng của người thực hiện ép tim."
-    },
-    correct: "B"
-  },
-  {
-    text: "Trường hợp gặp tai nạn giao thông có người bị nghi ngờ gãy xương đùi, việc đầu tiên cần thực hiện là gì?",
-    desc: "Quy trình xử trí chấn thương cơ xương khớp tránh biến chứng sốc chấn thương.",
-    options: {
-      A: "Cố định tạm thời chi bị gãy bằng nẹp thẳng (nẹp gỗ, nhánh cây cứng) băng chặt trên và dưới khớp gãy trước khi di chuyển nạn nhân, gọi ngay cấp cứu 115.",
-      B: "Cố gắng nắn thẳng xương đùi bị gãy ngay tại hiện trường.",
-      C: "Bế thốc nạn nhân dậy và đưa đi cấp cứu ngay lập tức bằng xe máy.",
-      D: "Cho nạn nhân uống nước ấm hoặc sữa để giảm bớt cảm giác đau đớn."
+      A: "Da có nhiều vết lở loét, dấu vết thâm tím, da sạm đen",
+      B: "Da khô, xanh xao, xuất hiện vết thương hoặc vết tiêm",
+      C: "Da mịn màng, không có vết thâm",
+      D: "Không có bất kỳ dấu hiệu nào"
     },
     correct: "A"
+  },
+  {
+    text: "Người sử dụng ma túy thường có biểu hiện gì trong ánh mắt?",
+    desc: "Sự thay đổi về đồng tử và trạng thái của mắt.",
+    options: {
+      A: "Đôi mắt sáng, tỉnh táo và tập trung do tác dụng của ma túy",
+      B: "Mắt đỏ, giãn đồng tử hoặc co nhỏ",
+      C: "Đôi mắt vô hồn, không có sức sống",
+      D: "Đáp án B, C đều đúng"
+    },
+    correct: "D"
+  },
+  {
+    text: "Một trong những dấu hiệu thể hiện người sử dụng ma túy là sự thay đổi trong học tập và công việc. Họ có thể:",
+    desc: "Hiệu suất và thái độ thực hiện công việc hàng ngày.",
+    options: {
+      A: "Tăng cường hiệu suất công việc và học tập",
+      B: "Tìm cách tránh nhiệm vụ và không hoàn thành công việc",
+      C: "Dễ dàng hoàn thành mọi nhiệm vụ",
+      D: "Tăng cường làm việc hiệu quả và sáng tạo"
+    },
+    correct: "B"
+  },
+  {
+    text: "Nếu bạn nhận thấy một bạn học trông rất mệt mỏi, hay ngủ gật, hoảng loạn, tâm lý thay đổi nhanh chóng trong lớp, bạn có thể nghi ngờ gì?",
+    desc: "Nhận biết các bất thường tâm lý và thể trạng của học sinh.",
+    options: {
+      A: "Họ đang bị ảnh hưởng của ma túy hoặc thiếu ngủ",
+      B: "Họ chỉ đơn giản là mệt vì học tập",
+      C: "Họ khỏe mạnh và không có vấn đề gì",
+      D: "Họ bị ốm và cần nghỉ ngơi"
+    },
+    correct: "A"
+  },
+  {
+    text: "Để không đi vào con đường nghiện ma túy, học sinh cần chú ý điều gì?",
+    desc: "Các nguyên tắc tự bảo vệ và phòng ngừa cá nhân.",
+    options: {
+      A: "Không tò mò, tìm cách dùng thử chất ma túy.",
+      B: "Chỉ dùng thử chất ma túy một lần duy nhất để biết.",
+      C: "Cảnh giác trước những đồ ăn vặt không rõ nguồn gốc.",
+      D: "Đáp án A, C là đúng."
+    },
+    correct: "D"
+  },
+  {
+    text: "Khi phát hiện bạn bè hoặc người thân có hành vi sử dụng chất ma túy, em nên lựa chọn cách ứng xử nào dưới đây?",
+    desc: "Ứng xử trách nhiệm khi phát hiện người thân cận sử dụng ma túy.",
+    options: {
+      A: "Giữ bí mật cho bạn, không để người khác kì thị rồi tránh xa bạn.",
+      B: "Im lặng và không quan tâm vì việc đó không ảnh hưởng gì tới mình.",
+      C: "Nhanh chóng báo cáo thông tin tới thầy, cô, cơ quan chức năng gần nhất.",
+      D: "Tuyệt đối che giấu thông tin để bảo vệ người thân, bạn bè."
+    },
+    correct: "C"
+  },
+  {
+    text: "Nội dung nào dưới đây không đúng khi bàn về con đường dẫn đến nghiện ma túy đá?",
+    desc: "Nhận thức sai lầm về mức độ gây nghiện của ma túy đá.",
+    options: {
+      A: "Tò mò muốn tìm hiểu cảm giác lạ khi sử dụng chất ma túy.",
+      B: "Muốn thể hiện bản thân, khẳng định cái tôi với bạn bè.",
+      C: "Bị bạn bè lôi kéo, xúi giục, kích động sử dụng ma túy.",
+      D: "Ma túy đá là một loại biệt dược, không gây nghiện cho người sử dụng."
+    },
+    correct: "D"
+  },
+  {
+    text: "Nội dung nào dưới đây không phản ánh đúng dấu hiệu nhận biết học sinh nghiện ma túy?",
+    desc: "Các biểu hiện thể trạng tích cực trái ngược với tình trạng nghiện.",
+    options: {
+      A: "Bị toát mồ hôi, ngáp vặt, ngủ gật, da xanh tái, nổi da gà.",
+      B: "Hay lo sợ, hoang tưởng, tính cách thay đổi thất thường.",
+      C: "Cất giấu chất ma túy hoặc dụng cụ sử dụng chất ma túy.",
+      D: "Cơ thể đầy đặn, khỏe mạnh, thần thái tươi tỉnh, học lực tốt."
+    },
+    correct: "D"
+  },
+  {
+    text: "Khi phát hiện bạn bè sử dụng ma túy, bạn nên làm gì?",
+    desc: "Cách giúp đỡ bạn bè vượt qua cám dỗ ma túy an toàn.",
+    options: {
+      A: "Giúp họ tìm kiếm sự hỗ trợ từ gia đình, nhà trường và cơ quan y tế",
+      B: "Tham gia sử dụng cùng để hiểu hơn",
+      C: "Im lặng và không can thiệp",
+      D: "Cười nhạo và xa lánh họ"
+    },
+    correct: "A"
+  },
+  {
+    text: "Để phòng tránh ma túy, học sinh cần làm gì?",
+    desc: "Kế hoạch chủ động phòng chống tệ nạn xã hội trong học đường.",
+    options: {
+      A: "Tăng cường sức khỏe thể chất và tham gia các hoạt động tích cực",
+      B: "Tìm hiểu kỹ về tác hại của tệ nạn ma túy",
+      C: "Tìm hiểu kỹ những thủ đoạn dụ dỗ lôi kéo tham gia sử dụng ma túy",
+      D: "Cả A, B, C đều đúng"
+    },
+    correct: "D"
   }
 ];
 
@@ -247,10 +346,37 @@ async function loadGlobalStats() {
   }
 }
 
+// Helper to shuffle an array in-place
+function shuffle(array) {
+  let currentIndex = array.length, randomIndex;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+  }
+  return array;
+}
+
 // Seed questions into firestore
 async function seedDefaultQuestions() {
   const snap = await db.collection("questions").get();
-  if (snap.empty) {
+  let needReSeed = snap.empty;
+  
+  if (!snap.empty) {
+    const firstDoc = snap.docs[0].data();
+    // Check if the old traffic safety question is present, if so, re-seed with the drug prevention questions
+    if (firstDoc.text && (firstDoc.text.includes("xe cứu thương") || firstDoc.text.includes("ngạt nước") || firstDoc.text.includes("hỏa hoạn"))) {
+      needReSeed = true;
+      const batch = db.batch();
+      snap.forEach(doc => {
+        batch.delete(doc.ref);
+      });
+      await batch.commit();
+      console.log("Cleared old safety questions.");
+    }
+  }
+
+  if (needReSeed) {
     const batch = db.batch();
     defaultQuestions.forEach(q => {
       const ref = db.collection("questions").doc();
@@ -260,7 +386,7 @@ async function seedDefaultQuestions() {
       });
     });
     await batch.commit();
-    console.log("Seeded default questions.");
+    console.log("Seeded new default questions.");
   }
 }
 
@@ -345,17 +471,21 @@ async function startQuizWorkflow() {
     await seedDefaultQuestions();
     const snap = await db.collection("questions").orderBy("createdAt", "asc").get();
     
-    quizQuestions = [];
+    let allQuestions = [];
     snap.forEach(doc => {
-      quizQuestions.push({ id: doc.id, ...doc.data() });
+      allQuestions.push({ id: doc.id, ...doc.data() });
     });
 
-    if (quizQuestions.length === 0) {
+    if (allQuestions.length === 0) {
       showToast("Lỗi: Không tìm thấy hồ sơ câu hỏi!", "error");
       btnInit.disabled = false;
       btnInit.innerHTML = `<span class="material-symbols-outlined">key</span> MỞ HỒ SƠ CHUYÊN ÁN`;
       return;
     }
+
+    // Shuffle and pick 10 questions randomly
+    shuffle(allQuestions);
+    quizQuestions = allQuestions.slice(0, Math.min(10, allQuestions.length));
 
     currentQuestionIndex = 0;
     userAnswers = [];
@@ -676,7 +806,7 @@ async function loadAdminDashboard() {
 // Admin Tab: Operators list
 async function loadAdminOperators() {
   const tbody = document.getElementById("admin-operators-rows");
-  tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-500 font-mono">Đang nạp hồ sơ điều tra...</td></tr>`;
+  tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-500 font-mono">Đang tải danh sách thành viên...</td></tr>`;
 
   try {
     const snap = await db.collection("operators").orderBy("createdAt", "desc").get();
@@ -696,7 +826,7 @@ function renderAdminOperatorsTable(operators) {
   tbody.innerHTML = "";
 
   if (operators.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-500 font-mono">Không tìm thấy hồ sơ Thám tử.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-500 font-mono">Không tìm thấy thông tin thành viên.</td></tr>`;
     return;
   }
 
@@ -720,15 +850,15 @@ function renderAdminOperatorsTable(operators) {
 
 // Admin: delete operator
 window.deleteOperator = async function(id) {
-  if (confirm("Hành động này sẽ xóa vĩnh viễn hồ sơ Thám tử khỏi hệ thống! Tiếp tục?")) {
+  if (confirm("Hành động này sẽ xóa vĩnh viễn thành viên khỏi hệ thống! Tiếp tục?")) {
     try {
       await db.collection("operators").doc(id).delete();
-      showToast("Xóa hồ sơ thám tử thành công.", "done");
+      showToast("Xóa thành viên thành công.", "done");
       loadAdminOperators();
       loadGlobalStats();
     } catch (e) {
       console.error(e);
-      showToast("Lỗi xóa hồ sơ!", "error");
+      showToast("Lỗi xóa thành viên!", "error");
     }
   }
 };
@@ -747,7 +877,7 @@ document.getElementById("admin-search-operators").addEventListener("input", (e) 
 // Admin Tab: Leaderboard submissions list
 async function loadAdminLeaderboard() {
   const tbody = document.getElementById("admin-leaderboard-rows");
-  tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-500 font-mono">Đang nạp bảng điểm chuyên án...</td></tr>`;
+  tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-500 font-mono">Đang nạp bảng kết quả khảo sát...</td></tr>`;
 
   try {
     const snap = await db.collection("quiz_submissions").orderBy("createdAt", "desc").get();
@@ -767,7 +897,7 @@ function renderAdminLeaderboardTable(submissions) {
   tbody.innerHTML = "";
 
   if (submissions.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-500 font-mono">Chưa có kết quả chuyên án được ghi nhận.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-500 font-mono">Chưa có kết quả khảo sát nào được ghi nhận.</td></tr>`;
     return;
   }
 
@@ -793,15 +923,15 @@ function renderAdminLeaderboardTable(submissions) {
 
 // Admin: delete submission
 window.deleteSubmission = async function(id) {
-  if (confirm("Xóa bản báo cáo giải mã chuyên án này?")) {
+  if (confirm("Xóa kết quả khảo sát này?")) {
     try {
       await db.collection("quiz_submissions").doc(id).delete();
-      showToast("Đã xóa báo cáo chuyên án.", "done");
+      showToast("Đã xóa kết quả khảo sát.", "done");
       loadAdminLeaderboard();
       loadGlobalStats();
     } catch (e) {
       console.error(e);
-      showToast("Xóa báo cáo thất bại!", "error");
+      showToast("Xóa kết quả thất bại!", "error");
     }
   }
 };
@@ -840,7 +970,7 @@ function renderAdminQuestionsList(questions) {
   list.innerHTML = "";
 
   if (questions.length === 0) {
-    list.innerHTML = `<div class="text-center text-slate-500 font-mono text-xs py-8">Ngân hàng câu hỏi trống. Vui lòng thêm chuyên án mới!</div>`;
+    list.innerHTML = `<div class="text-center text-slate-500 font-mono text-xs py-8">Ngân hàng câu hỏi trống. Vui lòng thêm câu hỏi mới!</div>`;
     return;
   }
 
@@ -940,25 +1070,25 @@ document.getElementById("admin-form-question").addEventListener("submit", async 
   try {
     if (id) {
       await db.collection("questions").doc(id).update(questionData);
-      showToast("Cập nhật chuyên án thành công.", "done");
+      showToast("Cập nhật câu hỏi thành công.", "done");
     } else {
       await db.collection("questions").add({
         ...questionData,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
       });
-      showToast("Thêm câu hỏi chuyên án thành công.", "done");
+      showToast("Thêm câu hỏi thành công.", "done");
     }
     resetQuestionForm();
     loadAdminQuestions();
   } catch (error) {
     console.error("Save question error:", error);
-    showToast("Lưu chuyên án lỗi!", "error");
+    showToast("Lỗi lưu câu hỏi!", "error");
   }
 });
 
 // Admin delete question
 window.deleteQuestion = async function(id) {
-  if (confirm("Xóa câu hỏi chuyên án này?")) {
+  if (confirm("Xóa câu hỏi này?")) {
     try {
       await db.collection("questions").doc(id).delete();
       showToast("Đã xóa câu hỏi.", "done");

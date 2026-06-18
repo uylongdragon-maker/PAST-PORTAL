@@ -410,24 +410,25 @@ body {
 
 /* Admin full-screen layout variables */
 .admin-sidebar {
-  background: rgba(30, 41, 59, 0.95);
+  background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  color: #f8fafc;
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.7);
+  color: var(--color-ink);
 }
 
 .admin-nav-link {
-  color: #94a3b8;
+  color: #64748b;
   transition: all 0.2s ease;
 }
 
 .admin-nav-link:hover {
-  color: #f8fafc;
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-ink);
+  background: rgba(255, 255, 255, 0.35);
 }
 
 .admin-nav-link.active {
-  color: #f8fafc;
+  color: var(--color-ink);
   background: rgba(252, 212, 0, 0.15);
   border-left: 4px solid var(--color-secondary);
 }

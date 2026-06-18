@@ -531,65 +531,65 @@
 
 
   <!-- ==================== WORKSPACE: VIEW ADMIN DASHBOARD ==================== -->
-  <div id="admin-workspace" class="hidden min-h-screen flex flex-col md:flex-row bg-slate-900 text-slate-100 font-body">
+  <div id="admin-workspace" class="hidden min-h-screen flex flex-col md:flex-row bg-transparent font-body relative">
     
     <!-- Admin Sidebar -->
     <aside class="w-full md:w-64 admin-sidebar flex flex-col p-6 space-y-8 flex-shrink-0">
       <!-- Title -->
       <div>
-        <div class="font-headline text-xl font-black tracking-tighter text-white flex items-center gap-2">
-          <span class="material-symbols-outlined text-amber-400">admin_panel_settings</span> P.A.S.T COMMAND
+        <div class="font-headline text-xl font-black tracking-tighter text-slate-800 flex items-center gap-2">
+          <span class="material-symbols-outlined text-amber-500" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span> P.A.S.T ADMIN
         </div>
-        <p class="text-[9px] text-slate-400 font-mono tracking-widest mt-1">ADMINISTRATIVE HUB</p>
+        <p class="text-[9px] text-slate-400 font-mono tracking-widest mt-1">HỆ THỐNG ĐIỀU HÀNH</p>
       </div>
 
       <!-- Admin Nav Links -->
       <nav class="flex-grow flex flex-col gap-2">
         <button class="admin-tab-btn admin-nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-left text-xs font-headline font-bold uppercase tracking-wider active" data-tab="operators">
-          <span class="material-symbols-outlined text-base">shield_person</span> Danh sách Thám tử
+          <span class="material-symbols-outlined text-base">groups</span> Danh sách Thành viên
         </button>
         <button class="admin-tab-btn admin-nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-left text-xs font-headline font-bold uppercase tracking-wider" data-tab="leaderboard">
-          <span class="material-symbols-outlined text-base">clinical_trial</span> Báo cáo Chuyên án
+          <span class="material-symbols-outlined text-base">analytics</span> Kết quả Khảo sát
         </button>
         <button class="admin-tab-btn admin-nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-left text-xs font-headline font-bold uppercase tracking-wider" data-tab="questions">
-          <span class="material-symbols-outlined text-base">folder_zip</span> Ngân hàng Đề thi
+          <span class="material-symbols-outlined text-base">quiz</span> Quản lý Câu hỏi
         </button>
       </nav>
 
       <!-- Admin Actions -->
-      <div class="space-y-3 pt-6 border-t border-slate-800">
-        <div class="text-[10px] text-slate-500 font-mono">SYS_CLEAN: ROOT</div>
-        <button id="btn-admin-logout" class="w-full py-2.5 bg-red-900/40 hover:bg-red-900/60 text-red-200 border border-red-800/80 font-headline font-bold rounded-lg transition-all tracking-wider text-xs flex items-center justify-center gap-1.5 uppercase">
-          <span class="material-symbols-outlined text-sm">power_settings_new</span> ĐĂNG XUẤT
+      <div class="space-y-3 pt-6 border-t border-slate-200">
+        <div class="text-[10px] text-slate-400 font-mono">HỆ THỐNG HOẠT ĐỘNG</div>
+        <button id="btn-admin-logout" class="w-full py-2.5 bg-red-50 hover:bg-red-100 text-red-650 border border-red-200 font-headline font-bold rounded-lg transition-all tracking-wider text-xs flex items-center justify-center gap-1.5 uppercase">
+          <span class="material-symbols-outlined text-sm">logout</span> ĐĂNG XUẤT ADMIN
         </button>
       </div>
     </aside>
 
     <!-- Admin Content Area -->
-    <main class="flex-grow p-6 md:p-10 overflow-y-auto space-y-8 bg-slate-950">
+    <main class="flex-grow p-6 md:p-10 overflow-y-auto space-y-8">
       
       <!-- Section: Operators Tab -->
       <div id="admin-tab-operators" class="admin-tab-content space-y-6">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-4">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-200 pb-4">
           <div>
-            <h2 class="font-headline text-2xl font-black text-white uppercase tracking-tight">Hồ sơ Điều tra viên</h2>
-            <p class="text-xs text-slate-400">Danh sách toàn bộ thám tử tình nguyện đăng ký nhận phù hiệu.</p>
+            <h2 class="font-headline text-2xl font-black text-slate-800 uppercase tracking-tight">Quản lý Thành viên CLB</h2>
+            <p class="text-xs text-slate-500">Danh sách toàn bộ thành viên tình nguyện đăng ký tham gia hoạt động.</p>
           </div>
-          <input id="admin-search-operators" class="rounded bg-slate-900 border-slate-800 text-white placeholder-slate-500 focus:border-amber-400 focus:ring-0 px-4 py-2.5 text-xs font-mono w-64 shadow-inner" placeholder="Tìm kiếm thám tử..." type="text"/>
+          <input id="admin-search-operators" class="rounded glass-input border-none px-4 py-2.5 text-xs font-mono w-64 shadow-inner" placeholder="Tìm kiếm thành viên..." type="text"/>
         </div>
 
-        <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-x-auto shadow-lg">
+        <div class="glass-panel rounded-xl overflow-x-auto">
           <table class="w-full text-left border-collapse text-xs">
             <thead>
-              <tr class="bg-slate-900 border-b border-slate-800 text-slate-400 font-bold uppercase tracking-wider font-mono">
+              <tr class="bg-white/40 border-b border-slate-200/50 text-slate-500 font-bold uppercase tracking-wider font-mono">
                 <th class="p-4">Họ và Tên</th>
                 <th class="p-4">Email liên lạc</th>
                 <th class="p-4">Số điện thoại</th>
-                <th class="p-4">Badge ID</th>
-                <th class="p-4 text-center">Xóa hồ sơ</th>
+                <th class="p-4">Mã số</th>
+                <th class="p-4 text-center">Xóa thành viên</th>
               </tr>
             </thead>
-            <tbody id="admin-operators-rows" class="divide-y divide-slate-800/40">
+            <tbody id="admin-operators-rows" class="divide-y divide-slate-100/50">
               <!-- Populated dynamically -->
             </tbody>
           </table>
@@ -598,27 +598,27 @@
 
       <!-- Section: Leaderboard/Submissions Tab -->
       <div id="admin-tab-leaderboard" class="admin-tab-content hidden space-y-6">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-4">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-200 pb-4">
           <div>
-            <h2 class="font-headline text-2xl font-black text-white uppercase tracking-tight">Báo cáo Giải mã Chuyên án</h2>
-            <p class="text-xs text-slate-400">Nhật ký giải đề thi trắc nghiệm nghiệp vụ của thám tử.</p>
+            <h2 class="font-headline text-2xl font-black text-slate-800 uppercase tracking-tight">Kết quả Khảo sát & Đánh giá</h2>
+            <p class="text-xs text-slate-500">Báo cáo kết quả bài kiểm tra trắc nghiệm của các thành viên.</p>
           </div>
-          <input id="admin-search-leaderboard" class="rounded bg-slate-900 border-slate-800 text-white placeholder-slate-500 focus:border-amber-400 focus:ring-0 px-4 py-2.5 text-xs font-mono w-64 shadow-inner" placeholder="Tìm kiếm bài nộp..." type="text"/>
+          <input id="admin-search-leaderboard" class="rounded glass-input border-none px-4 py-2.5 text-xs font-mono w-64 shadow-inner" placeholder="Tìm kiếm bài thi..." type="text"/>
         </div>
 
-        <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-x-auto shadow-lg">
+        <div class="glass-panel rounded-xl overflow-x-auto">
           <table class="w-full text-left border-collapse text-xs">
             <thead>
-              <tr class="bg-slate-900 border-b border-slate-800 text-slate-400 font-bold uppercase tracking-wider font-mono">
-                <th class="p-4">Badge ID</th>
-                <th class="p-4">Tên thám tử</th>
+              <tr class="bg-white/40 border-b border-slate-200/50 text-slate-500 font-bold uppercase tracking-wider font-mono">
+                <th class="p-4">Mã thành viên</th>
+                <th class="p-4">Họ và Tên</th>
                 <th class="p-4">Độ chính xác</th>
                 <th class="p-4">Thời gian</th>
-                <th class="p-4">Ngày nộp</th>
+                <th class="p-4">Ngày nộp bài</th>
                 <th class="p-4 text-center">Xóa kết quả</th>
               </tr>
             </thead>
-            <tbody id="admin-leaderboard-rows" class="divide-y divide-slate-800/40">
+            <tbody id="admin-leaderboard-rows" class="divide-y divide-slate-100/50">
               <!-- Populated dynamically -->
             </tbody>
           </table>
@@ -627,14 +627,14 @@
 
       <!-- Section: Questions Tab -->
       <div id="admin-tab-questions" class="admin-tab-content hidden space-y-6">
-        <div class="border-b border-slate-800 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h2 class="font-headline text-2xl font-black text-white uppercase tracking-tight">Kho tài liệu Chuyên án</h2>
-            <p class="text-xs text-slate-400">Quản lý câu hỏi kiểm tra nghiệp vụ an ninh đô thị.</p>
+            <h2 class="font-headline text-2xl font-black text-slate-800 uppercase tracking-tight">Ngân hàng Câu hỏi Trắc nghiệm</h2>
+            <p class="text-xs text-slate-500">Quản lý câu hỏi kiểm tra kiến thức nghiệp vụ đô thị.</p>
           </div>
           <div class="flex items-center gap-2">
             <input type="file" id="admin-import-docx" accept=".docx" class="hidden" />
-            <button id="btn-import-docx-trigger" class="btn-glass px-4 py-2.5 rounded text-xs font-bold text-sky-400 hover:text-sky-300 border border-sky-850 uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+            <button id="btn-import-docx-trigger" class="btn-glass px-4 py-2.5 rounded text-xs font-bold text-sky-600 hover:text-sky-500 border border-slate-200 uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
               <span class="material-symbols-outlined text-base">cloud_upload</span> Nhập đề từ file .docx
             </button>
           </div>
@@ -642,46 +642,46 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <!-- Question Form -->
-          <div class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-4 self-start shadow-lg">
-            <h3 id="admin-question-form-title" class="font-headline text-sm font-bold text-white uppercase tracking-wider">Thêm Câu Hỏi Mới</h3>
+          <div class="lg:col-span-5 glass-panel rounded-xl p-6 space-y-4 self-start shadow-sm">
+            <h3 id="admin-question-form-title" class="font-headline text-sm font-bold text-slate-850 uppercase tracking-wider">Thêm Câu Hỏi Mới</h3>
             
             <form id="admin-form-question" class="space-y-4">
               <input type="hidden" id="admin-question-id" />
               
               <div class="space-y-1">
-                <label class="font-mono text-[9px] text-slate-400 uppercase font-bold" for="q-text">Nội dung câu hỏi</label>
-                <textarea class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-2 text-xs" id="q-text" rows="3" placeholder="Nhập câu hỏi nghiệp vụ..." required></textarea>
+                <label class="font-mono text-[10px] text-slate-500 uppercase font-bold" for="q-text">Nội dung câu hỏi</label>
+                <textarea class="w-full rounded glass-input border-none px-3 py-2 text-xs text-slate-800" id="q-text" rows="3" placeholder="Nhập nội dung câu hỏi..." required></textarea>
               </div>
 
               <div class="space-y-1">
-                <label class="font-mono text-[9px] text-slate-400 uppercase font-bold" for="q-desc">Mô tả tình huống / Gợi ý</label>
-                <input class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-2 text-xs" id="q-desc" placeholder="Nhập gợi ý cho câu hỏi..." required type="text"/>
+                <label class="font-mono text-[10px] text-slate-500 uppercase font-bold" for="q-desc">Giải thích / Gợi ý đáp án</label>
+                <input class="w-full rounded glass-input border-none px-3 py-2 text-xs text-slate-800" id="q-desc" placeholder="Nhập giải thích chi tiết..." required type="text"/>
               </div>
 
-              <div class="space-y-2 pt-2 border-t border-slate-800">
-                <label class="font-mono text-[9px] text-slate-400 uppercase font-bold">Các phương án trả lời</label>
+              <div class="space-y-2 pt-2 border-t border-slate-200">
+                <label class="font-mono text-[10px] text-slate-500 uppercase font-bold">Các phương án trả lời</label>
                 
                 <div class="flex gap-2 items-center">
                   <span class="font-bold text-xs text-slate-500 font-mono">A</span>
-                  <input class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-1.5 text-xs" id="q-opt-A" placeholder="Phương án A" required type="text"/>
+                  <input class="w-full rounded glass-input border-none px-3 py-1.5 text-xs text-slate-800" id="q-opt-A" placeholder="Phương án A" required type="text"/>
                 </div>
                 <div class="flex gap-2 items-center">
                   <span class="font-bold text-xs text-slate-500 font-mono">B</span>
-                  <input class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-1.5 text-xs" id="q-opt-B" placeholder="Phương án B" required type="text"/>
+                  <input class="w-full rounded glass-input border-none px-3 py-1.5 text-xs text-slate-800" id="q-opt-B" placeholder="Phương án B" required type="text"/>
                 </div>
                 <div class="flex gap-2 items-center">
                   <span class="font-bold text-xs text-slate-500 font-mono">C</span>
-                  <input class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-1.5 text-xs" id="q-opt-C" placeholder="Phương án C" required type="text"/>
+                  <input class="w-full rounded glass-input border-none px-3 py-1.5 text-xs text-slate-800" id="q-opt-C" placeholder="Phương án C" required type="text"/>
                 </div>
                 <div class="flex gap-2 items-center">
                   <span class="font-bold text-xs text-slate-500 font-mono">D</span>
-                  <input class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-1.5 text-xs" id="q-opt-D" placeholder="Phương án D" required type="text"/>
+                  <input class="w-full rounded glass-input border-none px-3 py-1.5 text-xs text-slate-800" id="q-opt-D" placeholder="Phương án D" required type="text"/>
                 </div>
               </div>
 
-              <div class="space-y-1 pt-2 border-t border-slate-800">
-                <label class="font-mono text-[9px] text-slate-400 uppercase font-bold" for="q-correct">Đáp án đúng</label>
-                <select class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-2 text-xs font-mono" id="q-correct">
+              <div class="space-y-1 pt-2 border-t border-slate-200">
+                <label class="font-mono text-[10px] text-slate-500 uppercase font-bold" for="q-correct">Đáp án đúng</label>
+                <select class="w-full rounded glass-input border-none px-3 py-2 text-xs font-mono text-slate-800" id="q-correct">
                   <option value="A">A</option>
                   <option value="B">B</option>
                   <option value="C">C</option>
@@ -691,14 +691,14 @@
 
               <div class="flex gap-2 pt-4">
                 <button id="btn-question-save" class="btn-gold flex-1 py-2.5 rounded text-xs uppercase font-bold tracking-wider" type="submit">Lưu câu hỏi</button>
-                <button id="btn-question-cancel" class="btn-glass px-4 py-2.5 rounded text-xs uppercase font-semibold tracking-wider text-slate-300 hidden" type="button">Hủy</button>
+                <button id="btn-question-cancel" class="btn-glass px-4 py-2.5 rounded text-xs uppercase font-semibold tracking-wider text-slate-600 hidden" type="button">Hủy</button>
               </div>
             </form>
           </div>
 
           <!-- Question List -->
           <div class="lg:col-span-7 space-y-4">
-            <h3 class="font-headline text-lg font-bold text-white uppercase tracking-tight">Bộ câu hỏi hiện thời</h3>
+            <h3 class="font-headline text-lg font-bold text-slate-850 uppercase tracking-tight">Danh sách câu hỏi hiện tại</h3>
             <div id="admin-questions-list" class="space-y-4">
               <!-- Populated dynamically -->
             </div>
@@ -715,7 +715,7 @@
   <!-- Global Toast Notification Container -->
   <div id="toast" class="toast-notification">
     <span id="toast-icon" class="material-symbols-outlined text-sky-600">info</span>
-    <div id="toast-text" class="text-xs font-headline font-bold text-slate-800">Thông báo điều tra</div>
+    <div id="toast-text" class="text-xs font-headline font-bold text-slate-800">Thông báo</div>
   </div>
 
   <!-- Firebase Core JS SDK (v10 Compat) -->
