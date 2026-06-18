@@ -1,5 +1,7 @@
-/* Lumina Tactical Glassmorphism Design System - Detective Edition */
+@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* Lumina Tactical Glassmorphism Design System - Detective Edition */
 
 :root {
   --color-surface: #f8f9fa;
@@ -432,3 +434,4 @@ body {
   background: rgba(252, 212, 0, 0.15);
   border-left: 4px solid var(--color-secondary);
 }
+
