@@ -32,7 +32,7 @@ if (!firebase.apps.length) {
 const defaultQuestions = [
   {
     text: "Tác dụng của việc tuyên truyền về tác hại của ma túy là gì?",
-    desc: "Nâng cao nhận thức phòng ngừa tệ nạn ma túy.",
+    desc: "Tuyên truyền giúp nâng cao nhận thức cá nhân, từ đó giảm tỷ lệ thử nghiệm/sử dụng ma túy và huy động sức mạnh đoàn kết toàn dân trong việc đẩy lùi tệ nạn xã hội.",
     options: {
       A: "Nâng cao nhận thức việc sử dụng ma túy",
       B: "Giảm tỷ lệ sử dụng ma túy và nâng cao nhận thức cộng đồng",
@@ -43,7 +43,7 @@ const defaultQuestions = [
   },
   {
     text: "Quá trình nghiện ma túy thường trải qua những giai đoạn nào?",
-    desc: "Tìm hiểu tiến trình lệ thuộc chất gây nghiện.",
+    desc: "Tiến trình nghiện ma túy điển hình đi từ Sử dụng (thử nghiệm) -> Lạm dụng (thường xuyên, sai mục đích) -> Lệ thuộc (nghiện nặng, mất kiểm soát thể chất/tâm lý).",
     options: {
       A: "Lạm dụng ma túy => sử dụng ma túy => lệ thuộc ma túy.",
       B: "Sử dụng ma túy => lạm dụng ma túy => lệ thuộc ma túy.",
@@ -54,7 +54,7 @@ const defaultQuestions = [
   },
   {
     text: "Dấu hiệu nào sau đây có thể nhận biết người nghiện Heroine?",
-    desc: "Các biểu hiện lâm sàng đặc trưng của người sử dụng Heroine.",
+    desc: "Sự thiếu hụt chất trong cơ thể gây ra hội chứng cai như ngáp liên tục, sợ nước/ngại tắm, mắt lờ đờ đỏ ngầu và môi thâm tím.",
     options: {
       A: "Ngáp vặt, nổi da gà, sợ nước, tiêu chảy, lở loét",
       B: "Mắt đỏ, môi thâm, ngáp vặt, sợ nước",
@@ -65,7 +65,7 @@ const defaultQuestions = [
   },
   {
     text: "Khi sử dụng ma túy, một trong những dấu hiệu thường thấy về mặt lời nói là gì?",
-    desc: "Sự thay đổi trong giao tiếp và phát ngôn của người sử dụng chất kích thích.",
+    desc: "Chất ma túy kích thích hoặc ức chế hệ thần kinh trung ương mạnh mẽ, khiến người dùng nói nhanh, không kiểm soát, mất mạch lạc hoặc đột ngột u uất, ít nói.",
     options: {
       A: "Lời nói hoảng loạn, dễ bị kích động",
       B: "Nói chuyện nhanh, khó kiểm soát và không có sự mạch lạc",
@@ -76,7 +76,7 @@ const defaultQuestions = [
   },
   {
     text: "Người sử dụng ma túy bằng hình thức tiêm chích có thể có dấu hiệu nào trên cơ thể?",
-    desc: "Các dấu hiệu tổn thương vật lý trên bề mặt da.",
+    desc: "Việc dùng kim tiêm thường để lại vết kim chích, thâm tím dọc tĩnh mạch (như khuỷu tay, mu bàn tay, cổ chân) kèm theo da sạm, dễ lở loét do nhiễm trùng.",
     options: {
       A: "Da có nhiều vết lở loét, dấu vết thâm tím, da sạm đen",
       B: "Da khô, xanh xao, xuất hiện vết thương hoặc vết tiêm",
@@ -87,7 +87,7 @@ const defaultQuestions = [
   },
   {
     text: "Người sử dụng ma túy thường có biểu hiện gì trong ánh mắt?",
-    desc: "Sự thay đổi về đồng tử và trạng thái của mắt.",
+    desc: "Sự tác động lên hệ thần kinh tự chủ khiến đồng tử bị co nhỏ hoặc giãn to bất thường, mắt đỏ ngầu, ánh nhìn lờ đờ vô hồn.",
     options: {
       A: "Đôi mắt sáng, tỉnh táo và tập trung do tác dụng của ma túy",
       B: "Mắt đỏ, giãn đồng tử hoặc co nhỏ",
@@ -98,7 +98,7 @@ const defaultQuestions = [
   },
   {
     text: "Một trong những dấu hiệu thể hiện người sử dụng ma túy là sự thay đổi trong học tập và công việc. Họ có thể:",
-    desc: "Hiệu suất và thái độ thực hiện công việc hàng ngày.",
+    desc: "Sự lệ thuộc chất làm mất tập trung, suy giảm trí lực và hoại tử trách nhiệm, dẫn đến thường xuyên trốn tránh công việc, sa sút học lực.",
     options: {
       A: "Tăng cường hiệu suất công việc và học tập",
       B: "Tìm cách tránh nhiệm vụ và không hoàn thành công việc",
@@ -109,7 +109,7 @@ const defaultQuestions = [
   },
   {
     text: "Nếu bạn nhận thấy một bạn học trông rất mệt mỏi, hay ngủ gật, hoảng loạn, tâm lý thay đổi nhanh chóng trong lớp, bạn có thể nghi ngờ gì?",
-    desc: "Nhận biết các bất thường tâm lý và thể trạng của học sinh.",
+    desc: "Những biểu hiện bất thường về tâm lý như ảo giác, hoảng loạn hoặc ngủ gật liên tục là dấu hiệu cảnh báo cao về việc sử dụng chất cấm hoặc kiệt sức nặng.",
     options: {
       A: "Họ đang bị ảnh hưởng của ma túy hoặc thiếu ngủ",
       B: "Họ chỉ đơn giản là mệt vì học tập",
@@ -120,7 +120,7 @@ const defaultQuestions = [
   },
   {
     text: "Để không đi vào con đường nghiện ma túy, học sinh cần chú ý điều gì?",
-    desc: "Các nguyên tắc tự bảo vệ và phòng ngừa cá nhân.",
+    desc: "Bảo vệ bản thân bằng cách tuyệt đối không dùng thử ma túy dù chỉ 1 lần, đồng thời nâng cao cảnh giác trước bánh kẹo, nước uống lạ không rõ nguồn gốc.",
     options: {
       A: "Không tò mò, tìm cách dùng thử chất ma túy.",
       B: "Chỉ dùng thử chất ma túy một lần duy nhất để biết.",
@@ -131,7 +131,7 @@ const defaultQuestions = [
   },
   {
     text: "Khi phát hiện bạn bè hoặc người thân có hành vi sử dụng chất ma túy, em nên lựa chọn cách ứng xử nào dưới đây?",
-    desc: "Ứng xử trách nhiệm khi phát hiện người thân cận sử dụng ma túy.",
+    desc: "Im lặng hay che giấu sẽ gián tiếp hại họ. Báo cáo nhanh cho thầy cô hoặc người lớn để tìm kiếm sự hỗ trợ cai nghiện là giải pháp nhân văn và an toàn nhất.",
     options: {
       A: "Giữ bí mật cho bạn, không để người khác kì thị rồi tránh xa bạn.",
       B: "Im lặng và không quan tâm vì việc đó không ảnh hưởng gì tới mình.",
@@ -142,7 +142,7 @@ const defaultQuestions = [
   },
   {
     text: "Nội dung nào dưới đây không đúng khi bàn về con đường dẫn đến nghiện ma túy đá?",
-    desc: "Nhận thức sai lầm về mức độ gây nghiện của ma túy đá.",
+    desc: "Ma túy đá (Methamphetamine) là chất ma túy tổng hợp cực kỳ nguy hiểm, gây nghiện mạnh và tàn phá nghiêm trọng não bộ ngay từ những lần sử dụng đầu.",
     options: {
       A: "Tò mò muốn tìm hiểu cảm giác lạ khi sử dụng chất ma túy.",
       B: "Muốn thể hiện bản thân, khẳng định cái tôi với bạn bè.",
@@ -153,7 +153,7 @@ const defaultQuestions = [
   },
   {
     text: "Nội dung nào dưới đây không phản ánh đúng dấu hiệu nhận biết học sinh nghiện ma túy?",
-    desc: "Các biểu hiện thể trạng tích cực trái ngược với tình trạng nghiện.",
+    desc: "Người nghiện ma túy bị suy kiệt thể trạng, da xanh xao, sụt cân và suy nhược thần kinh rõ rệt, không thể có thần thái tươi tỉnh hay thể chất khỏe mạnh.",
     options: {
       A: "Bị toát mồ hôi, ngáp vặt, ngủ gật, da xanh tái, nổi da gà.",
       B: "Hay lo sợ, hoang tưởng, tính cách thay đổi thất thường.",
@@ -164,7 +164,7 @@ const defaultQuestions = [
   },
   {
     text: "Khi phát hiện bạn bè sử dụng ma túy, bạn nên làm gì?",
-    desc: "Cách giúp đỡ bạn bè vượt qua cám dỗ ma túy an toàn.",
+    desc: "Hãy khuyên ngăn bạn và chủ động tìm kiếm sự giúp đỡ từ nhà trường, gia đình hoặc trung tâm y tế để giúp họ cai nghiện kịp thời.",
     options: {
       A: "Giúp họ tìm kiếm sự hỗ trợ từ gia đình, nhà trường và cơ quan y tế",
       B: "Tham gia sử cùng để hiểu hơn",
@@ -175,7 +175,7 @@ const defaultQuestions = [
   },
   {
     text: "Để phòng tránh ma túy, học sinh cần làm gì?",
-    desc: "Kế hoạch chủ động phòng chống tệ nạn xã hội trong học đường.",
+    desc: "Tự phòng vệ chủ động bằng cách trang bị đầy đủ kiến thức pháp luật, hiểu rõ tác hại của ma túy và tích cực tham gia các hoạt động thể chất lành mạnh.",
     options: {
       A: "Tăng cường sức khỏe thể chất và tham gia các hoạt động tích cực",
       B: "Tìm hiểu kỹ về tác hại của tệ nạn ma túy",
@@ -186,7 +186,7 @@ const defaultQuestions = [
   },
   {
     text: "Một người bạn của bạn liên tục thể hiện hành vi bạo lực và kích động. Điều này có thể là dấu hiệu gì?",
-    desc: "Nhận biết biểu hiện hành vi thay đổi do chất kích thích.",
+    desc: "Hành vi kích động hoặc bạo lực bất thường có thể do sang chấn tâm lý hoặc do tác động của ma túy đá gây hoang tưởng, ảo giác hung hãn.",
     options: {
       A: "Người đó đang trong tình trạng căng thẳng của bản thân",
       B: "Người đó có thể đang sử dụng ma túy hoặc các chất kích thích",
@@ -197,7 +197,7 @@ const defaultQuestions = [
   },
   {
     text: "Trong tình huống bạn phát hiện có người sử dụng ma túy trong trường học, bạn cần làm gì ngay lập tức?",
-    desc: "Hành động khẩn cấp đảm bảo an toàn học đường.",
+    desc: "Hành động báo ngay cho ban giám hiệu/giáo viên giúp ngăn chặn kịp thời các rủi ro mất an toàn học đường cho bản thân và bạn học xung quanh.",
     options: {
       A: "Báo ngay cho giáo viên hoặc nhà trường để xử lý kịp thời",
       B: "Bỏ qua và không can thiệp",
@@ -208,7 +208,7 @@ const defaultQuestions = [
   },
   {
     text: "Nếu bạn nghe thông tin từ bạn bè rằng họ sử dụng ma túy, bạn sẽ làm gì?",
-    desc: "Ứng xử phù hợp khi nghe thông tin từ bạn bè sử dụng ma túy.",
+    desc: "Ứng xử đúng đắn là khuyên nhủ họ ngừng lại và chủ động báo tin cho thầy cô, gia đình để can thiệp y tế sớm nhất.",
     options: {
       A: "Đưa ra lời khuyên và khuyến khích họ ngừng sử dụng",
       B: "Báo cho thầy cô, gia đình, cơ quan chức năng gần nhất",
@@ -219,7 +219,7 @@ const defaultQuestions = [
   },
   {
     text: "Nếu bạn nghi ngờ rằng bạn bè đang sử dụng ma túy, nhưng chưa có căn cứ, bạn sẽ làm gì?",
-    desc: "Tìm kiếm sự giúp đỡ từ người có trách nhiệm.",
+    desc: "Báo cáo cho người lớn có trách nhiệm (thầy cô, cha mẹ) để họ xác minh, giúp đỡ bạn một cách an toàn, tránh tự ý điều tra gây nguy hiểm.",
     options: {
       A: "Thảo luận trực tiếp với người đó về nghi ngờ của mình",
       B: "Báo cáo với giáo viên hoặc gia đình để tìm kiếm sự giúp đỡ",
@@ -230,7 +230,7 @@ const defaultQuestions = [
   },
   {
     text: "Trong trường hợp người bạn của bạn đang lén lút, bí mật cất giấu đồ vật nghi vấn là chất ma túy, bạn nên làm gì để giúp đỡ họ?",
-    desc: "Xử lý thông tin phát hiện chất nghi vấn.",
+    desc: "Báo cáo với thầy cô là phương án an toàn nhất giúp ngăn ngừa tàng trữ chất cấm trong khuôn viên trường học và hỗ trợ học sinh vi phạm.",
     options: {
       A: "Đưa họ đến cơ quan y tế hoặc tìm kiếm sự giúp đỡ chuyên môn",
       B: "Để họ tự giải quyết và không can thiệp",
@@ -241,7 +241,7 @@ const defaultQuestions = [
   },
   {
     text: "Nếu bạn phát hiện bạn thân bị ngất xỉu do sử dụng ma túy, bạn sẽ làm gì?",
-    desc: "Sơ cấp cứu khẩn cấp cho người bị ngộ độc hoặc sốc thuốc.",
+    desc: "Đây là ca sốc thuốc nguy cấp đe dọa tính mạng. Cần lập tức gọi cấp cứu 115 và báo công an để xử lý nguồn độc chất kịp thời.",
     options: {
       A: "Tự chăm sóc và chờ đợi họ tỉnh dậy",
       B: "Gọi ngay cho cấp cứu hoặc bác sĩ để can thiệp kịp thời",
@@ -252,7 +252,7 @@ const defaultQuestions = [
   },
   {
     text: "Nếu bạn thấy một người bạn bị ảnh hưởng bởi ma túy và có dấu hiệu ngừng thở, bạn nên làm gì?",
-    desc: "Hành vi cứu trợ khẩn cấp đối với người suy hô hấp.",
+    desc: "Suy hô hấp cấp do quá liều là cực kỳ nguy kịch. Cần gọi 115 lập tức và tiến hành hồi sức tim phổi (CPR) nếu có chuyên môn.",
     options: {
       A: "Đừng làm gì, để họ tự phục hồi",
       B: "Gọi ngay cấp cứu và thực hiện các biện pháp sơ cứu nếu có thể",
@@ -263,7 +263,7 @@ const defaultQuestions = [
   },
   {
     text: "Nếu bạn nghi ngờ người thân mang theo ma túy, bạn nên làm gì?",
-    desc: "Ứng xử trách nhiệm đối với nghi ngờ người thân sử dụng.",
+    desc: "Cần tiếp cận an toàn: quan sát hành vi, tìm hiểu tác hại và báo cho gia đình hoặc cơ quan công an để có hướng tháo gỡ kịp thời.",
     options: {
       A: "Quan sát hành vi của họ",
       B: "Tìm hiểu thông tin về ma túy",
@@ -274,7 +274,7 @@ const defaultQuestions = [
   },
   {
     text: "Làm thế nào để không bị bạn bè rủ rê, lôi kéo vào con đường sử dụng ma túy:",
-    desc: "Rèn luyện bản lĩnh từ chối và phòng chống lôi kéo.",
+    desc: "Xây dựng bản lĩnh kiên quyết nói 'Không' trước mọi lời cám dỗ, mời mọc, thách đố của bạn bè đối với các chất gây nghiện.",
     options: {
       A: "Không quan hệ bạn bè",
       B: "Không nghe theo sự cám dỗ, mời mọc, thách thức của bạn bè.",
@@ -285,7 +285,7 @@ const defaultQuestions = [
   },
   {
     text: "Nếu bạn thấy người lạ bán ma túy gần trường học, bạn nên làm gì?",
-    desc: "Tố giác tội phạm ma túy quanh khu vực học đường.",
+    desc: "Hãy báo cáo ngay cho giáo viên và công an địa phương để bảo vệ môi trường học đường lành mạnh, ngăn chặn tội phạm dụ dỗ học sinh.",
     options: {
       A: "Báo cho giáo viên hoặc ban giám hiệu",
       B: "Báo cho cơ quan chức năng",
@@ -296,7 +296,7 @@ const defaultQuestions = [
   },
   {
     text: "Nếu bạn được mời thử ma túy tại một bữa tiệc, bạn nên làm gì?",
-    desc: "Cách ứng xử kiên quyết từ chối lời mời sử dụng chất kích thích.",
+    desc: "Từ chối dứt khoát và nhanh chóng rời khỏi địa điểm để tránh bị ép buộc hoặc liên đới vào các hành vi vi phạm pháp luật.",
     options: {
       A: "Từ chối và rời khỏi bữa tiệc",
       B: "Thử một chút để không bị lạc lõng",
@@ -307,7 +307,7 @@ const defaultQuestions = [
   },
   {
     text: "Nếu một người bị bắt khi đang mang ma túy trong người nhưng khẳng định là không biết đó là ma túy, họ có thể bị xử lý như thế nào?",
-    desc: "Kiến thức pháp luật về tội tàng trữ trái phép chất ma túy.",
+    desc: "Theo quy định pháp luật, việc tàng trữ chất cấm là hành vi phạm pháp hình sự. Việc bào chữa 'không biết' không đương nhiên được miễn tội.",
     options: {
       A: "Không bị xử lý vì không biết",
       B: "Bị xử lý về tội tàng trữ ma túy nếu chứng minh được ma túy là của họ",
@@ -318,7 +318,7 @@ const defaultQuestions = [
   },
   {
     text: "Nếu bạn phát hiện bạn bè mình sử dụng ma túy nhưng không can thiệp, bạn sẽ chịu trách nhiệm gì?",
-    desc: "Trách nhiệm pháp lý liên quan đến việc không tố giác tội phạm ma túy.",
+    desc: "Biết hành vi tàng trữ/sử dụng trái phép chất ma túy mà không tố giác có thể cấu thành hành vi không tố giác tội phạm theo quy định pháp luật.",
     options: {
       A: "Không chịu trách nhiệm vì đó là quyền của họ",
       B: "Có thể chịu trách nhiệm về việc không báo cáo cho người có thẩm quyền",
@@ -329,7 +329,7 @@ const defaultQuestions = [
   },
   {
     text: "Nếu bạn nghe tin đồn về một nhóm người đang tổ chức bán ma túy trong trường học, bạn nên làm gì?",
-    desc: "Hành động đúng đắn khi tiếp nhận thông tin tội phạm ma túy học đường.",
+    desc: "Báo ngay cho nhà trường hoặc cơ quan công an là cách xử lý đúng đắn để họ kịp thời điều tra phá chuyên án học đường.",
     options: {
       A: "Không làm gì và giữ im lặng",
       B: "Báo ngay cho nhà trường hoặc cơ quan chức năng để họ điều tra",
@@ -340,7 +340,7 @@ const defaultQuestions = [
   },
   {
     text: "Nếu một người bạn của bạn yêu cầu bạn giúp giấu ma túy trong cặp sách, bạn nên làm gì?",
-    desc: "Kiên quyết từ chối đồng lõa tàng trữ và vận chuyển ma túy trái phép.",
+    desc: "Giúp cất giấu ma túy cấu thành hành vi đồng phạm tàng trữ trái phép chất ma túy. Phải kiên quyết từ chối và thông báo cho người lớn xử lý.",
     options: {
       A: "Cứ làm theo yêu cầu của bạn để giữ tình bạn",
       B: "Báo ngay cho giáo viên hoặc cơ quan Công an về tình huống này",
@@ -351,7 +351,7 @@ const defaultQuestions = [
   },
   {
     text: "Khi biết một bạn học đang sử dụng ma túy nhưng bạn không chắc chắn, bạn nên làm gì?",
-    desc: "Báo cáo xác minh để giúp đỡ bạn học kịp thời.",
+    desc: "Cách tốt nhất là thông báo cho nhà trường/phụ huynh để họ kiểm tra tinh tế, hỗ trợ kịp thời cho học sinh đó trước khi sa ngã sâu hơn.",
     options: {
       A: "Để họ tự quyết định việc sử dụng",
       B: "Khuyến khích bạn ấy tiếp tục thử nghiệm ma túy",
@@ -470,9 +470,21 @@ export default function Page() {
 
   // Seeding Database
   const seedDefaultQuestions = async () => {
+    // Check sessionStorage to bypass network request if checked in this session
+    if (typeof window !== "undefined" && sessionStorage.getItem("past_questions_seeded") === "true") {
+      return;
+    }
     try {
       const snap = await db.collection("questions").get();
       let needReSeed = snap.empty || snap.size < 30;
+
+      // Force re-seed if the old description/hint text is detected (to upgrade to the new explanation schema)
+      if (!snap.empty && !needReSeed) {
+        const firstDocDesc = snap.docs[0].data().desc;
+        if (firstDocDesc && (firstDocDesc.includes("Nâng cao nhận thức phòng ngừa tệ nạn ma túy.") || firstDocDesc.includes("Tìm hiểu tiến trình lệ thuộc"))) {
+          needReSeed = true;
+        }
+      }
 
       if (!snap.empty && (needReSeed || (snap.docs[0].data().text && (snap.docs[0].data().text.includes("xe cứu thương") || snap.docs[0].data().text.includes("ngạt nước") || snap.docs[0].data().text.includes("hỏa hoạn"))))) {
         needReSeed = true;
@@ -494,7 +506,10 @@ export default function Page() {
           });
         });
         await batch.commit();
-        console.log("Seeded 30 drug prevention questions.");
+        console.log("Seeded 30 drug prevention questions with explanations.");
+      }
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("past_questions_seeded", "true");
       }
     } catch (e) {
       console.warn("Seeding warn:", e);
@@ -509,15 +524,17 @@ export default function Page() {
     }, 3000);
   };
 
-  // Load global stats
+  // Load global stats (optimized to run queries in parallel)
   const loadGlobalStats = async () => {
     try {
-      const opSnap = await db.collection("operators").get();
-      const subSnap = await db.collection("quiz_submissions").get();
+      const [opSnap, subSnap] = await Promise.all([
+        db.collection("operators").get(),
+        db.collection("quiz_submissions").get()
+      ]);
 
       let totalAcc = 0;
       subSnap.forEach(doc => {
-        totalAcc += doc.data().accuracy;
+        totalAcc += doc.data().accuracy || 0;
       });
 
       const avgAcc = subSnap.size > 0 ? Math.round(totalAcc / subSnap.size) : 0;
@@ -815,7 +832,7 @@ export default function Page() {
     }
 
     try {
-      await seedDefaultQuestions();
+      // Questions are already seeded on mount; loading directly to speed up transition
       const snap = await db.collection("questions").orderBy("createdAt", "asc").get();
       const allQs = [];
       snap.forEach(doc => {
@@ -844,6 +861,9 @@ export default function Page() {
   };
 
   const handleSelectOption = (optKey) => {
+    // Prevent selecting another option once answered
+    if (userAnswers[currentQuestionIndex]) return;
+
     const question = quizQuestions[currentQuestionIndex];
     const updatedAnswers = [...userAnswers];
     updatedAnswers[currentQuestionIndex] = {
@@ -1895,15 +1915,44 @@ export default function Page() {
               <div id="quiz-options-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Object.keys(quizQuestions[currentQuestionIndex].options).map(key => {
                   const optText = quizQuestions[currentQuestionIndex].options[key];
-                  const isSelected = userAnswers[currentQuestionIndex]?.selectedOption === key;
+                  const currentAnswer = userAnswers[currentQuestionIndex];
+                  const isCorrectOption = key === quizQuestions[currentQuestionIndex].correct;
+                  const isSelectedOption = currentAnswer?.selectedOption === key;
+
+                  let btnClass = "quiz-option-btn glass-panel p-5 rounded-xl flex items-start gap-4 text-left scanline transition-all duration-300 ";
+                  let indicatorClass = "flex-shrink-0 w-10 h-10 rounded shadow-sm flex items-center justify-center border font-headline font-bold ";
+
+                  if (!currentAnswer) {
+                    btnClass += "hover:bg-sky-50 hover:border-sky-300 hover:shadow-md cursor-pointer";
+                    indicatorClass += "bg-white/80 border-slate-200 text-slate-500";
+                  } else {
+                    btnClass += "pointer-events-none ";
+                    if (isCorrectOption) {
+                      btnClass += "bg-emerald-500/10 border-emerald-500 shadow-sm text-emerald-950";
+                      indicatorClass += "bg-emerald-500 border-emerald-600 text-white";
+                    } else if (isSelectedOption) {
+                      btnClass += "bg-rose-500/10 border-rose-500 shadow-sm text-rose-950";
+                      indicatorClass += "bg-rose-500 border-rose-600 text-white";
+                    } else {
+                      btnClass += "opacity-50 border-slate-200/50 bg-white/20";
+                      indicatorClass += "bg-white/50 border-slate-200/30 text-slate-400";
+                    }
+                  }
+
                   return (
                     <button 
                       key={key}
                       onClick={() => handleSelectOption(key)}
-                      class={`quiz-option-btn glass-panel p-5 rounded-xl flex items-start gap-4 text-left scanline transition-all duration-300 ${isSelected ? "selected" : ""}`}
+                      class={btnClass}
                     >
-                      <div class="flex-shrink-0 w-10 h-10 rounded bg-white/80 shadow-sm flex items-center justify-center border border-slate-200 text-slate-500 font-headline font-bold">
-                        {key}
+                      <div class={indicatorClass}>
+                        {currentAnswer && isCorrectOption ? (
+                          <span class="material-symbols-outlined text-sm">check</span>
+                        ) : currentAnswer && isSelectedOption ? (
+                          <span class="material-symbols-outlined text-sm">close</span>
+                        ) : (
+                          key
+                        )}
                       </div>
                       <div>
                         <h4 class="font-headline text-slate-800 font-semibold mb-0.5 text-xs">
@@ -1915,6 +1964,29 @@ export default function Page() {
                   );
                 })}
               </div>
+
+              {/* Immediate Feedback & Explanation Card */}
+              {userAnswers[currentQuestionIndex] && (
+                <div class={`p-5 rounded-xl border transition-all duration-300 flex items-start gap-4 shadow-sm ${
+                  userAnswers[currentQuestionIndex].isCorrect 
+                    ? "bg-emerald-500/5 border-emerald-300/60 text-emerald-900" 
+                    : "bg-rose-500/5 border-rose-300/60 text-rose-900"
+                }`}>
+                  <span class="material-symbols-outlined mt-0.5 flex-shrink-0 text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>
+                    {userAnswers[currentQuestionIndex].isCorrect ? "verified" : "warning"}
+                  </span>
+                  <div class="space-y-1.5 flex-grow">
+                    <h5 class="font-headline font-bold text-xs tracking-wide uppercase">
+                      {userAnswers[currentQuestionIndex].isCorrect 
+                        ? "PHÂN TÍCH CHÍNH XÁC!" 
+                        : `SAI LẦM! PHƯƠNG ÁN ĐÚNG LÀ ${quizQuestions[currentQuestionIndex].correct}`}
+                    </h5>
+                    <p class="text-[11px] leading-relaxed text-slate-700">
+                      <strong>Giải thích nghiệp vụ:</strong> {quizQuestions[currentQuestionIndex].desc || "Chưa ghi nhận dữ liệu giải thích."}
+                    </p>
+                  </div>
+                </div>
+              )}
 
               {/* Action */}
               <div class="flex justify-end pt-2">
