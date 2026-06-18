@@ -1,0 +1,19 @@
+{
+  "name": "past-portal",
+  "version": "1.0.0",
+  "description": "Cổng thông tin điện tử CLB Tình nguyện Vì Bình Yên Thành Phố với thiết kế Glassmorphism",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite"
+  },
+  "keywords": [
+    "past-portal",
+    "glassmorphism",
+    "firebase"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}

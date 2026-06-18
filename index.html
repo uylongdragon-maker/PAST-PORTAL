@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>P.A.S.T Portal - Cổng thông tin điện tử CLB Tình nguyện Vì Bình Yên Thành Phố</title>
+  <title>P.A.S.T Portal - Văn phòng Điều tra An ninh CLB Vì Bình Yên Thành Phố</title>
   
   <!-- TailwindCSS CDN -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -29,647 +29,682 @@
   <!-- Custom Glassmorphism Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="bg-slate-50 text-slate-800 font-body min-h-screen flex flex-col antialiased selection:bg-amber-100 selection:text-slate-900 overflow-x-hidden">
+<body class="bg-slate-50 text-slate-800 font-body min-h-screen flex flex-col antialiased selection:bg-sky-100 selection:text-slate-900 overflow-x-hidden">
 
   <!-- Background Layer -->
   <div class="cyber-grid"></div>
   <div class="ambient-glow-1"></div>
   <div class="ambient-glow-2"></div>
 
-  <!-- Mobile Top Bar Navigation -->
-  <nav class="md:hidden fixed top-0 w-full z-50 bg-white/70 backdrop-blur-md border-b border-slate-200/50 h-16 flex items-center justify-between px-6 shadow-sm">
-    <div class="font-headline text-xl font-black tracking-tighter text-slate-900">
-      P.A.S.T. PORTAL
-    </div>
-    <div class="flex items-center gap-4">
-      <!-- User profile shortcut for mobile -->
-      <div id="mobile-user-badge" class="w-8 h-8 rounded-full bg-slate-200 border border-slate-300 overflow-hidden cursor-pointer">
-        <img id="mobile-avatar" alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW7CyQ3j9Vu1CePfw6MhZKvNmMJ4cOnP74l-GBdWNW0Uc6qSptiEXOZCjr_qEJiHujolINVu1klaZ7AFcFyX5Apl1qng5-Vkl9tGe-EENYFGur_0K5Ws4oWZFlLNyHlPP6vhAe-BV9s3g4N1yECPk2DlEKyVgTorH-7gLEx5vqKHzMOD9qVn5vOaS5k5wNiu_i0yeFf-E64k5o7KSjzxnh-szJKwUgTgaGaapOU0vxZpToZ3Ph8Lkd3YVGyqPZ1qRS7khnx1-tDBg"/>
+  <!-- ==================== GUEST LAYOUT CONTAINER ==================== -->
+  <div id="guest-layout" class="flex flex-col min-h-screen">
+    
+    <!-- Mobile Top Bar Navigation -->
+    <nav class="md:hidden fixed top-0 w-full z-50 bg-white/70 backdrop-blur-md border-b border-slate-200/50 h-16 flex items-center justify-between px-6 shadow-sm">
+      <div class="font-headline text-lg font-black tracking-tighter text-slate-900 flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-sky-600">policy</span> P.A.S.T. DETECTIVE
       </div>
-      <button id="mobile-menu-toggle" class="text-slate-600 p-1">
-        <span class="material-symbols-outlined text-2xl">menu</span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Mobile Menu Dropdown -->
-  <div id="mobile-nav-menu" class="hidden fixed top-16 left-0 w-full z-45 bg-white/95 backdrop-blur-lg border-b border-slate-200 shadow-lg flex flex-col p-6 space-y-4 md:hidden">
-    <a class="mobile-nav-link flex items-center gap-3 py-2 text-slate-600 font-semibold" data-view="home" href="#">
-      <span class="material-symbols-outlined">grid_view</span> Trang chủ
-    </a>
-    <a class="mobile-nav-link flex items-center gap-3 py-2 text-slate-600 font-semibold" data-view="quiz" href="#">
-      <span class="material-symbols-outlined">quiz</span> Đố Bạn Kì Tài
-    </a>
-    <a class="mobile-nav-link flex items-center gap-3 py-2 text-slate-600 font-semibold" data-view="leaderboard" href="#">
-      <span class="material-symbols-outlined">leaderboard</span> Bảng xếp hạng
-    </a>
-    <a class="mobile-nav-link flex items-center gap-3 py-2 text-slate-600 font-semibold" data-view="admin-login" href="#">
-      <span class="material-symbols-outlined">admin_panel_settings</span> Quản trị viên
-    </a>
-    <hr class="border-slate-200"/>
-    <div id="mobile-operator-info" class="text-xs text-slate-500 font-mono">
-      OPERATOR: <span class="session-op-id">CHƯA ĐĂNG KÝ</span>
-    </div>
-    <button id="btn-mobile-logout" class="hidden w-full py-2 bg-red-50 text-red-600 rounded font-semibold text-center border border-red-200">
-      Đăng Xuất
-    </button>
-  </div>
-
-  <!-- Desktop Sidebar -->
-  <aside class="hidden md:flex flex-col h-screen fixed left-0 top-0 pt-6 pb-6 glass-panel z-40 w-64 border-r border-white/60">
-    <div class="px-6 mb-8 flex flex-col items-center">
-      <div class="w-20 h-20 rounded-full bg-white border-2 border-amber-300 overflow-hidden mb-3 shadow-md">
-        <img id="sidebar-avatar" alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW7CyQ3j9Vu1CePfw6MhZKvNmMJ4cOnP74l-GBdWNW0Uc6qSptiEXOZCjr_qEJiHujolINVu1klaZ7AFcFyX5Apl1qng5-Vkl9tGe-EENYFGur_0K5Ws4oWZFlLNyHlPP6vhAe-BV9s3g4N1yECPk2DlEKyVgTorH-7gLEx5vqKHzMOD9qVn5vOaS5k5wNiu_i0yeFf-E64k5o7KSjzxnh-szJKwUgTgaGaapOU0vxZpToZ3Ph8Lkd3YVGyqPZ1qRS7khnx1-tDBg"/>
+      <div class="flex items-center gap-4">
+        <!-- User profile shortcut for mobile -->
+        <div id="mobile-user-badge" class="w-8 h-8 rounded-full bg-slate-200 border border-slate-300 overflow-hidden cursor-pointer flex items-center justify-center">
+          <span class="material-symbols-outlined text-slate-500 text-lg">badge</span>
+        </div>
+        <button id="mobile-menu-toggle" class="text-slate-600 p-1">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
       </div>
-      <h2 id="sidebar-op-name" class="font-headline text-lg text-slate-800 tracking-wide text-center font-bold truncate max-w-full px-2">CHƯA ĐĂNG KÝ</h2>
-      <p class="font-mono text-xs text-slate-400 mt-1">ID: <span class="session-op-id">--------</span></p>
-    </div>
-
-    <!-- Navigation links -->
-    <nav class="flex-grow flex flex-col gap-1.5 px-4">
-      <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-white/50 hover:text-slate-900 transition-colors duration-200" data-view="home" href="#">
-        <span class="material-symbols-outlined text-xl">grid_view</span>
-        <span class="font-headline text-sm font-semibold tracking-wider">Trang chủ</span>
-      </a>
-      <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-white/50 hover:text-slate-900 transition-colors duration-200" data-view="quiz" href="#">
-        <span class="material-symbols-outlined text-xl">quiz</span>
-        <span class="font-headline text-sm font-semibold tracking-wider">Đố Bạn Kì Tài</span>
-      </a>
-      <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-white/50 hover:text-slate-900 transition-colors duration-200" data-view="leaderboard" href="#">
-        <span class="material-symbols-outlined text-xl">leaderboard</span>
-        <span class="font-headline text-sm font-semibold tracking-wider">Bảng xếp hạng</span>
-      </a>
-      <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-white/50 hover:text-slate-900 transition-colors duration-200" data-view="admin-login" href="#">
-        <span class="material-symbols-outlined text-xl">admin_panel_settings</span>
-        <span class="font-headline text-sm font-semibold tracking-wider">Quản trị viên</span>
-      </a>
     </nav>
 
-    <!-- Sidebar Footer Buttons -->
-    <div class="px-4 mt-auto">
-      <button id="btn-sidebar-login" class="w-full py-2.5 bg-amber-400 hover:bg-amber-500 text-amber-950 font-headline font-bold rounded-lg transition-all tracking-wider text-sm flex items-center justify-center gap-2">
-        <span class="material-symbols-outlined text-lg">login</span> ĐĂNG KÝ OPERATOR
-      </button>
-      <button id="btn-sidebar-logout" class="hidden w-full py-2.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-headline font-bold rounded-lg transition-all tracking-wider text-sm flex items-center justify-center gap-2">
-        <span class="material-symbols-outlined text-lg">logout</span> ĐĂNG XUẤT
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-nav-menu" class="hidden fixed top-16 left-0 w-full z-45 bg-white/95 backdrop-blur-lg border-b border-slate-200 shadow-lg flex flex-col p-6 space-y-4 md:hidden">
+      <a class="mobile-nav-link flex items-center gap-3 py-2 text-slate-600 font-semibold" data-view="home" href="#">
+        <span class="material-symbols-outlined">folder_open</span> Hồ sơ Chuyên án
+      </a>
+      <a class="mobile-nav-link flex items-center gap-3 py-2 text-slate-600 font-semibold" data-view="quiz" href="#">
+        <span class="material-symbols-outlined">extension</span> Giải mã Chuyên án
+      </a>
+      <a class="mobile-nav-link flex items-center gap-3 py-2 text-slate-600 font-semibold" data-view="leaderboard" href="#">
+        <span class="material-symbols-outlined">format_list_numbered</span> Bảng xếp hạng Thám tử
+      </a>
+      <a class="mobile-nav-link flex items-center gap-3 py-2 text-slate-600 font-semibold" data-view="admin-login" href="#">
+        <span class="material-symbols-outlined">key</span> Đăng nhập Quản trị
+      </a>
+      <hr class="border-slate-200"/>
+      <div id="mobile-operator-info" class="text-xs text-slate-500 font-mono flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> DETECTIVE: <span class="session-op-id">VÔ DANH</span>
+      </div>
+      <button id="btn-mobile-logout" class="hidden w-full py-2 bg-red-50 text-red-600 rounded font-semibold text-center border border-red-200 text-xs tracking-wider uppercase font-headline">
+        Hủy ủy quyền (Đăng Xuất)
       </button>
     </div>
-  </aside>
 
-  <!-- Main View Container -->
-  <main class="flex-grow pt-24 pb-16 md:pl-72 px-6 max-w-[1400px] w-full mx-auto relative z-10">
-    
-    <!-- ==================== 1. VIEW HOME ==================== -->
-    <section id="view-home" class="spa-view active-view space-y-12">
-      <!-- Hero Header -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-white/60 bg-white/50 text-slate-800 font-mono text-xs tracking-wider shadow-sm">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 led-glowing"></span>
-            PORTAL CHÍNH THỨC CỦA CLB
-          </div>
-          <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-none uppercase">
-            P.A.S.T Portal
-          </h1>
-          <p class="font-headline text-xl text-amber-600 font-bold tracking-wide">
-            CỔNG THÔNG TIN ĐIỆN TỬ - CLB TÌNH NGUYỆN VÌ BÌNH YÊN THÀNH PHỐ
-          </p>
-          <div class="border-l-4 border-amber-400 pl-4 py-1 text-slate-600 text-base leading-relaxed">
-            Chào mừng bạn đến với Cổng thông tin của P.A.S.T (Peace & Safety Tactical Team). Hãy đăng ký làm <strong>Operator (Tình nguyện viên)</strong> của chúng tôi để tham gia các chiến dịch giữ gìn trật tự đô thị, hỗ trợ giao thông, phản ứng nhanh phòng cháy chữa cháy, sơ cấp cứu và cùng kiến tạo một đô thị yên bình.
-          </div>
-          
-          <div class="flex flex-wrap gap-4 pt-2">
-            <button id="btn-home-start-quiz" class="btn-gold scanline-btn px-8 py-3.5 rounded-lg text-sm uppercase tracking-wider flex items-center gap-2">
-              <span class="material-symbols-outlined">sports_esports</span> Bắt đầu làm bài test
-            </button>
-            <button id="btn-home-enlist" class="btn-glass px-8 py-3.5 rounded-lg text-sm uppercase tracking-wider flex items-center gap-2">
-              <span class="material-symbols-outlined">assignment_ind</span> Đăng ký Operator
-            </button>
-          </div>
+    <!-- Desktop Sidebar -->
+    <aside class="hidden md:flex flex-col h-screen fixed left-0 top-0 pt-6 pb-6 glass-panel z-40 w-64 border-r border-white/60">
+      <div class="px-6 mb-6 flex flex-col items-center">
+        <!-- Detective Badge Icon -->
+        <div class="w-16 h-16 rounded-full bg-sky-50 border-2 border-sky-300 flex items-center justify-center mb-3 shadow-md text-sky-600">
+          <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">shield_person</span>
         </div>
-
-        <!-- Hero Card Graphic -->
-        <div class="lg:col-span-5 relative">
-          <div class="glass-panel rounded-xl p-3 h-[320px] md:h-[400px] flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-tr from-amber-500/10 to-emerald-500/10 mix-blend-overlay"></div>
-            <img alt="Bình Yên Thành Phố" class="w-full h-full object-cover rounded-lg opacity-85 contrast-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPet8DFtXnzcKRjwJjcDycQR5UdgIUzk4xtX2S7I_v1pnSiW41R0KI0MVEVnZbh0FeAoRJRFjciDGELWjLhsCA3B6T402J-tZr8IL3uOTXTGy495wRI8d21iayMPqry9zqQnJ4V4d_eXIpWr4lN-c76eUjp1Z1I7Hdk9FrnfPCshWB9uAP9rT5BLFilG9z6CCO2aW_wd3xXFPmU2uNF5AOtjcgcJtr1j14C3DwZxFYwW2kiNdnm5VAjPkfY3Xm2zUba8m48L5H4xg"/>
-            <div class="absolute top-6 right-6 font-mono text-right text-xs text-slate-500 tracking-wider">
-              <div>SYS_STATUS: ACTIVE</div>
-              <div>COMMS: SECURE</div>
-            </div>
-            <div class="absolute bottom-6 left-6 flex items-center gap-2 bg-white/60 px-3 py-1.5 rounded border border-white/80">
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-500 led-glowing"></span>
-              <span class="font-mono text-[10px] text-slate-700 font-bold uppercase">OPERATION VÌ BÌNH YÊN</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bento Grid Statistics -->
-      <div class="space-y-4">
-        <h3 class="font-headline text-2xl font-bold text-slate-900">Thông Số Mạng Lưới Operator</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="glass-panel rounded-xl p-6 flex items-center gap-4">
-            <div class="w-12 h-12 rounded bg-amber-100/50 flex items-center justify-center text-amber-600 border border-amber-200">
-              <span class="material-symbols-outlined text-2xl">groups</span>
-            </div>
-            <div>
-              <div id="stat-total-operators" class="font-headline text-3xl font-extrabold text-slate-800">0</div>
-              <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Operators Đăng Ký</div>
-            </div>
-          </div>
-          <div class="glass-panel rounded-xl p-6 flex items-center gap-4">
-            <div class="w-12 h-12 rounded bg-emerald-100/50 flex items-center justify-center text-emerald-600 border border-emerald-200">
-              <span class="material-symbols-outlined text-2xl">verified</span>
-            </div>
-            <div>
-              <div id="stat-total-submissions" class="font-headline text-3xl font-extrabold text-slate-800">0</div>
-              <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Lượt Khảo Sát Quiz</div>
-            </div>
-          </div>
-          <div class="glass-panel rounded-xl p-6 flex items-center gap-4">
-            <div class="w-12 h-12 rounded bg-blue-100/50 flex items-center justify-center text-blue-600 border border-blue-200">
-              <span class="material-symbols-outlined text-2xl">analytics</span>
-            </div>
-            <div>
-              <div id="stat-avg-accuracy" class="font-headline text-3xl font-extrabold text-slate-800">0%</div>
-              <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Độ Chính Xác Trung Bình</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Content Section (About & Rules) -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- About the Quiz / Operation Rules -->
-        <div class="glass-panel rounded-xl p-8 space-y-6">
-          <h3 class="font-headline text-2xl font-bold text-slate-900 flex items-center gap-2">
-            <span class="material-symbols-outlined text-amber-500 text-3xl">campaign</span>
-            Mục tiêu Operation: Đố Bạn Kì Tài
-          </h3>
-          <p class="text-slate-600 leading-relaxed text-sm">
-            Đây là chương trình đánh giá trực quan kiến thức nghiệp vụ dành cho các chiến sĩ tình nguyện của CLB. Các câu hỏi xoay quanh tình huống phản ứng nhanh đô thị:
-          </p>
-          <ul class="space-y-3 font-body text-sm text-slate-600">
-            <li class="flex items-start gap-2">
-              <span class="material-symbols-outlined text-amber-500 text-base mt-0.5">check_circle</span>
-              <span><strong>An toàn giao thông:</strong> Kỹ năng điều phối, chỉ dẫn giao thông giờ cao điểm tại nút giao ùn tắc.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="material-symbols-outlined text-amber-500 text-base mt-0.5">check_circle</span>
-              <span><strong>Phản ứng sự cố:</strong> Quy trình dập tắt đám cháy nhỏ, phối hợp cứu hộ khi xảy ra tai nạn.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="material-symbols-outlined text-amber-500 text-base mt-0.5">check_circle</span>
-              <span><strong>Sơ cấp cứu cơ bản:</strong> Cách xử lý chấn thương, đột quỵ, sơ cứu ngạt nước tạm thời.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Quiz Rules Bento Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="glass-card rounded-xl p-6 flex flex-col justify-between">
-            <div class="space-y-2">
-              <div class="text-slate-800 font-headline font-bold flex items-center gap-2">
-                <span class="material-symbols-outlined text-xl">assignment_late</span> Node Nghiệp Vụ
-              </div>
-              <p class="text-xs text-slate-500 leading-relaxed">
-                Hoàn thành tất cả các câu hỏi trong bộ câu đố nghiệp vụ. Dữ liệu sẽ được mã hóa và đồng bộ trực tiếp lên hệ thống.
-              </p>
-            </div>
-            <div class="mt-4 text-[10px] font-mono text-slate-400">DEC_REQ: LIVE_DATA</div>
-          </div>
-
-          <div class="glass-card rounded-xl p-6 flex flex-col justify-between">
-            <div class="space-y-2">
-              <div class="text-slate-800 font-headline font-bold flex items-center gap-2">
-                <span class="material-symbols-outlined text-xl">timelapse</span> Đếm Giờ Chi Tiết
-              </div>
-              <p class="text-xs text-slate-500 leading-relaxed">
-                Thời gian làm bài được đo lường chính xác từng mili-giây. Giải quyết nhanh và chính xác nhất để tối ưu điểm hiệu suất của bạn.
-              </p>
-            </div>
-            <div class="mt-4 text-[10px] font-mono text-slate-400">TIMER_UNIT: MILLISECONDS</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 2. VIEW REGISTER ==================== -->
-    <section id="view-register" class="spa-view space-y-8 max-w-md mx-auto">
-      <div class="text-center">
-        <h2 class="font-headline text-3xl font-black text-slate-900 tracking-tight uppercase">ĐĂNG KÝ OPERATOR</h2>
-        <p class="font-mono text-xs text-slate-500 tracking-widest uppercase mt-1">
-          Tactical Enlistment Protocol
+        <h2 id="sidebar-op-name" class="font-headline text-base text-slate-800 tracking-wide text-center font-bold truncate max-w-full px-2 uppercase">CHƯA ĐĂNG KÝ</h2>
+        <p class="font-mono text-[10px] text-slate-400 mt-1 flex items-center gap-1 justify-center">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-300" id="sidebar-led-session"></span> Badge ID: <span class="session-op-id">--------</span>
         </p>
       </div>
 
-      <div class="glass-panel rounded-xl p-8 relative overflow-hidden">
-        <!-- Corner decorations -->
-        <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-slate-400/50"></div>
-        <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-slate-400/50"></div>
-        <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-slate-400/50"></div>
-        <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-slate-400/50"></div>
+      <!-- Navigation links -->
+      <nav class="flex-grow flex flex-col gap-1.5 px-4">
+        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-white/50 hover:text-slate-900 transition-colors duration-200" data-view="home" href="#">
+          <span class="material-symbols-outlined text-xl">folder_open</span>
+          <span class="font-headline text-sm font-semibold tracking-wider">Hồ sơ Chuyên án</span>
+        </a>
+        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-white/50 hover:text-slate-900 transition-colors duration-200" data-view="quiz" href="#">
+          <span class="material-symbols-outlined text-xl">extension</span>
+          <span class="font-headline text-sm font-semibold tracking-wider">Giải mã Chuyên án</span>
+        </a>
+        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-white/50 hover:text-slate-900 transition-colors duration-200" data-view="leaderboard" href="#">
+          <span class="material-symbols-outlined text-xl">format_list_numbered</span>
+          <span class="font-headline text-sm font-semibold tracking-wider">Bảng xếp hạng</span>
+        </a>
+      </nav>
 
-        <!-- Protocol Warning -->
-        <div class="bg-white/60 border border-white/80 rounded p-4 mb-6 flex items-start gap-3 shadow-inner">
-          <span class="material-symbols-outlined text-amber-600 mt-0.5">info</span>
-          <div>
-            <h4 class="font-mono text-[10px] font-extrabold text-slate-800 uppercase tracking-widest">Quy tắc danh tính</h4>
-            <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">
-              Vui lòng sử dụng thông tin chính xác. Mỗi Số điện thoại và Email chỉ được liên kết với một Hồ sơ Operator duy nhất trên hệ thống.
+      <!-- Sidebar Footer Buttons -->
+      <div class="px-4 mt-auto space-y-2">
+        <button id="btn-sidebar-login" class="w-full py-2.5 bg-sky-500 hover:bg-sky-600 text-white font-headline font-bold rounded-lg transition-all tracking-wider text-xs flex items-center justify-center gap-1.5 shadow-md">
+          <span class="material-symbols-outlined text-base">assignment_ind</span> ĐĂNG KÝ THÁM TỬ
+        </button>
+        <button id="btn-sidebar-logout" class="hidden w-full py-2.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-headline font-bold rounded-lg transition-all tracking-wider text-xs flex items-center justify-center gap-1.5">
+          <span class="material-symbols-outlined text-base">logout</span> HỦY ỦY QUYỀN
+        </button>
+        <hr class="border-slate-200/50" />
+        <button id="btn-sidebar-admin" class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200 font-headline font-semibold rounded-lg transition-all text-[11px] flex items-center justify-center gap-1">
+          <span class="material-symbols-outlined text-sm">shield</span> CỔNG QUẢN TRỊ
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main View Canvas -->
+    <main class="flex-grow pt-24 pb-16 md:pl-72 px-6 max-w-[1400px] w-full mx-auto relative z-10">
+      
+      <!-- ==================== GUEST: VIEW HOME ==================== -->
+      <section id="view-home" class="spa-view active-view space-y-12">
+        <!-- Hero Header Case Board -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-6 detective-crosshair relative py-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-white/60 bg-white/50 text-slate-800 font-mono text-[10px] tracking-wider shadow-sm">
+              <span class="w-2.5 h-2.5 rounded-full bg-sky-500 led-glowing"></span>
+              P.A.S.T CIVIL INVESTIGATION UNIT
+            </div>
+            <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-none uppercase">
+              Văn Phòng Thám Tử <br/>
+              <span class="text-sky-600">Bình Yên Thành Phố</span>
+            </h1>
+            <p class="font-headline text-lg text-slate-600 font-medium tracking-wide">
+              Mạng lưới thám tử tình nguyện giám sát an ninh và an toàn đô thị.
             </p>
-          </div>
-        </div>
-
-        <form id="form-registration" class="space-y-4">
-          <!-- Name Input -->
-          <div class="space-y-1">
-            <label class="font-mono text-[11px] font-bold text-slate-600 uppercase tracking-wider flex justify-between" for="reg-name">
-              <span>Họ và Tên</span>
-              <span class="text-red-500 hidden text-[9px] uppercase tracking-wider" id="reg-name-error">Bắt buộc</span>
-            </label>
-            <div class="relative glass-input-wrapper">
-              <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-lg">person</span>
-              <input class="w-full rounded glass-input border-none pl-10 pr-4 py-2.5 text-sm font-headline" id="reg-name" placeholder="NGUYỄN VĂN A" required type="text"/>
+            <div class="border-l-4 border-sky-500 pl-4 py-1 text-slate-600 text-sm leading-relaxed typewriter-text">
+              Hệ thống giám sát đô thị P.A.S.T kêu gọi toàn thể công dân tham gia đóng vai trò là các **Thám tử/Điều tra viên đô thị**. Nhiệm vụ của bạn là theo dõi hồ sơ sự vụ, giải mã các chuyên án giao thông, cứu nạn, phòng hỏa và sơ cứu để nâng cấp kỹ năng xử lý khủng hoảng dân sự.
             </div>
-          </div>
-
-          <!-- Email Input -->
-          <div class="space-y-1">
-            <label class="font-mono text-[11px] font-bold text-slate-600 uppercase tracking-wider flex justify-between" for="reg-email">
-              <span>Email Comms</span>
-              <span class="text-red-500 hidden text-[9px] uppercase tracking-wider" id="reg-email-error">Không hợp lệ</span>
-            </label>
-            <div class="relative glass-input-wrapper">
-              <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-lg">mail</span>
-              <input class="w-full rounded glass-input border-none pl-10 pr-4 py-2.5 text-sm font-mono" id="reg-email" placeholder="OPERATOR@EMAIL.COM" required type="email"/>
-            </div>
-          </div>
-
-          <!-- Phone Input -->
-          <div class="space-y-1">
-            <label class="font-mono text-[11px] font-bold text-slate-600 uppercase tracking-wider flex justify-between" for="reg-phone">
-              <span>Số điện thoại bảo mật</span>
-              <span class="text-red-500 hidden text-[9px] uppercase tracking-wider" id="reg-phone-error">Không hợp lệ</span>
-            </label>
-            <div class="relative glass-input-wrapper">
-              <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-lg">phone_iphone</span>
-              <input class="w-full rounded glass-input border-none pl-10 pr-4 py-2.5 text-sm font-mono" id="reg-phone" placeholder="0901234567" required type="tel"/>
-            </div>
-          </div>
-
-          <button class="btn-gold w-full mt-6 py-3.5 rounded font-headline uppercase tracking-wider text-sm flex items-center justify-center gap-2" type="submit">
-            <span>Xác nhận thông tin & Đăng Nhập</span>
-            <span class="material-symbols-outlined font-bold text-base">login</span>
-          </button>
-        </form>
-      </div>
-    </section>
-
-    <!-- ==================== 3. VIEW QUIZ ==================== -->
-    <section id="view-quiz" class="spa-view space-y-8">
-      
-      <!-- Quiz State: Pre-Start / Start Screen -->
-      <div id="quiz-pre-start" class="max-w-xl mx-auto space-y-6 text-center">
-        <div class="w-20 h-20 mx-auto rounded-full bg-amber-100 flex items-center justify-center border border-amber-300 shadow-md">
-          <span class="material-symbols-outlined text-amber-600 text-4xl">extension</span>
-        </div>
-        <div class="space-y-2">
-          <h2 class="font-headline text-3xl font-black text-slate-900 tracking-tight">KÍCH HOẠT BÀI ĐÁNH GIÁ NGHIỆP VỤ</h2>
-          <p class="text-slate-500 text-sm max-w-md mx-auto">
-            Hệ thống sẽ tải bộ câu hỏi kiểm tra kỹ năng tình nguyện ứng phó của bạn. Hãy đảm bảo bạn đã sẵn sàng tập trung.
-          </p>
-        </div>
-
-        <div class="glass-panel p-6 rounded-xl text-left space-y-4 max-w-md mx-auto text-xs text-slate-600">
-          <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-lg text-emerald-500">done_all</span>
-            <span>Mỗi câu hỏi có 4 phương án, chỉ chọn 1 phương án đúng nhất.</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-lg text-red-500">hourglass_top</span>
-            <span>Đồng hồ sẽ chạy ngay khi bấm nút bắt đầu.</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-lg text-blue-500">lock_reset</span>
-            <span>Kết quả sẽ tự động lưu lại vào hệ thống khi bạn hoàn thành.</span>
-          </div>
-        </div>
-
-        <button id="btn-quiz-initiate" class="btn-gold px-10 py-4 rounded font-headline uppercase tracking-widest text-sm inline-flex items-center gap-2">
-          <span class="material-symbols-outlined">play_arrow</span> BẮT ĐẦU NGAY
-        </button>
-      </div>
-
-      <!-- Quiz State: Live Quiz Arena -->
-      <div id="quiz-arena" class="hidden space-y-8 max-w-4xl mx-auto">
-        <!-- Live HUD Status (Timer and progress) -->
-        <header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 glass-panel p-6 rounded-xl">
-          <div class="flex-grow w-full">
-            <div class="flex justify-between items-baseline mb-2">
-              <h3 class="font-headline text-xl font-bold text-slate-800 uppercase tracking-tight">TIẾN TRÌNH ĐÁNH GIÁ</h3>
-              <span id="quiz-progress-text" class="font-mono text-sm font-semibold text-slate-500">Q_01 / 05</span>
-            </div>
-            <!-- Progress bar -->
-            <div class="w-full bg-slate-200/50 h-2.5 rounded-full overflow-hidden border border-slate-300/30 relative">
-              <div id="quiz-progress-bar" class="bg-amber-400 h-full transition-all duration-300 ease-out" style="width: 20%;"></div>
-            </div>
-          </div>
-          
-          <!-- Live Timer -->
-          <div class="flex flex-col items-end border border-white/60 bg-white/50 px-6 py-2.5 rounded-lg w-full md:w-auto shadow-inner">
-            <span class="font-mono text-[9px] font-bold tracking-widest text-slate-400">ELAPSED TIME</span>
-            <div class="font-mono text-xl font-semibold tracking-wider text-slate-700 flex items-center gap-2">
-              <span class="material-symbols-outlined text-lg">timer</span>
-              <span id="quiz-live-timer">00:00:000</span>
-            </div>
-          </div>
-        </header>
-
-        <!-- Question Area -->
-        <div class="space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/60 border border-slate-200 shadow-sm rounded">
-            <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-            <span class="font-mono text-[10px] font-bold tracking-widest text-slate-600 uppercase">INTEL DECRYPTION ACTIVE</span>
-          </div>
-          <h2 id="quiz-question-title" class="font-headline text-2xl md:text-3xl font-extrabold text-slate-800 leading-tight">
-            Question text loading...
-          </h2>
-          <p id="quiz-question-desc" class="text-slate-500 text-sm">
-            Analyze the parameters carefully before selection.
-          </p>
-        </div>
-
-        <!-- Options Container -->
-        <div id="quiz-options-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-          <!-- Option buttons will be generated dynamically -->
-        </div>
-
-        <!-- Actions -->
-        <div class="flex justify-end pt-4">
-          <button id="btn-quiz-next" class="btn-gold px-8 py-3.5 rounded font-headline uppercase tracking-wider text-xs flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-            <span>Câu Tiếp Theo</span> <span class="material-symbols-outlined text-sm">arrow_forward</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Quiz State: Quiz Finished / Results -->
-      <div id="quiz-finished" class="hidden max-w-xl mx-auto space-y-8 text-center">
-        <div class="w-20 h-20 mx-auto rounded-full bg-emerald-100 flex items-center justify-center border border-emerald-300 shadow-md">
-          <span class="material-symbols-outlined text-emerald-600 text-4xl">check_circle</span>
-        </div>
-        
-        <div class="space-y-2">
-          <h2 class="font-headline text-3xl font-black text-slate-900 tracking-tight uppercase">ĐÁNH GIÁ HOÀN TẤT</h2>
-          <p class="text-slate-500 text-sm">Hệ thống đã lưu lại kết quả đánh giá của bạn.</p>
-        </div>
-
-        <!-- Results Card -->
-        <div class="glass-panel p-8 rounded-xl space-y-6">
-          <div class="grid grid-cols-2 gap-4 divide-x divide-slate-200/50">
-            <div class="space-y-1">
-              <span class="font-mono text-[10px] text-slate-400 uppercase tracking-widest">Độ Chính Xác</span>
-              <div id="result-accuracy" class="font-headline text-3xl font-black text-slate-800">0%</div>
-            </div>
-            <div class="space-y-1">
-              <span class="font-mono text-[10px] text-slate-400 uppercase tracking-widest">Thời gian hoàn thành</span>
-              <div id="result-time" class="font-mono text-xl font-bold text-slate-800 pt-1">00:00.000</div>
-            </div>
-          </div>
-
-          <div class="bg-white/40 border border-white/60 rounded p-4 text-left text-xs text-slate-500 leading-relaxed font-body">
-            Kết quả của bạn đã được đối soát trên bảng xếp hạng mạng lưới Operator. Bạn có thể xem vị trí của mình ngay trên mục Rankings.
-          </div>
-        </div>
-
-        <div class="flex justify-center gap-4">
-          <button id="btn-quiz-view-rankings" class="btn-gold px-8 py-3.5 rounded text-xs uppercase tracking-wider font-semibold">
-            Xem Bảng Xếp Hạng
-          </button>
-          <button id="btn-quiz-retry" class="btn-glass px-8 py-3.5 rounded text-xs uppercase tracking-wider font-semibold">
-            Làm Lại Bài Test
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 4. VIEW LEADERBOARD ==================== -->
-    <section id="view-leaderboard" class="spa-view space-y-8">
-      
-      <!-- Leaderboard Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div class="space-y-2">
-          <h1 class="font-headline text-3xl md:text-4xl font-extrabold text-slate-950 tracking-tight uppercase">Bảng Xếp Hạng Operators</h1>
-          <p class="text-slate-500 text-sm max-w-xl">
-            Đánh giá theo thời gian thực về hiệu suất kiểm tra nghiệp vụ của các Operators. Top 10 Operators dẫn đầu sẽ được vinh danh đặc biệt.
-          </p>
-        </div>
-        
-        <!-- Search bar -->
-        <div class="w-full md:w-80 relative">
-          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400">search</span>
-          <input id="leaderboard-search" class="w-full rounded glass-input border-none pl-10 pr-4 py-3 text-xs font-mono placeholder-slate-400 shadow-inner" placeholder="Tìm kiếm mã hoặc email Operator..." type="text"/>
-        </div>
-      </div>
-
-      <!-- Leaderboard Table -->
-      <div class="glass-panel rounded-xl overflow-hidden">
-        <!-- Table Header -->
-        <div class="grid grid-cols-12 gap-4 px-6 py-4 bg-white/40 border-b border-slate-200/50 font-mono text-[11px] font-bold text-slate-500 tracking-wider">
-          <div class="col-span-2 md:col-span-1 text-center">RANK</div>
-          <div class="col-span-6 md:col-span-5">ĐỊNH DANH OPERATOR</div>
-          <div class="col-span-4 md:col-span-3 text-right">ĐỘ CHÍNH XÁC</div>
-          <div class="hidden md:block md:col-span-3 text-right">THỜI GIAN LÀM BÀI</div>
-        </div>
-
-        <!-- Table Container -->
-        <div id="leaderboard-rows" class="divide-y divide-slate-100/50">
-          <!-- Rows will be injected dynamically -->
-          <div class="py-12 text-center text-slate-400 font-mono text-xs">Đang tải bảng xếp hạng...</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 5. VIEW ADMIN LOGIN ==================== -->
-    <section id="view-admin-login" class="spa-view max-w-sm mx-auto space-y-6">
-      <div class="text-center space-y-1">
-        <h2 class="font-headline text-2xl font-black text-slate-900 uppercase">ĐĂNG NHẬP HỆ THỐNG QUẢN TRỊ</h2>
-        <p class="font-mono text-[10px] text-slate-500 tracking-widest uppercase">Admin clearance level required</p>
-      </div>
-
-      <div class="glass-panel p-8 rounded-xl space-y-4">
-        <div class="space-y-1">
-          <label class="font-mono text-[10px] font-bold text-slate-600 uppercase" for="admin-user">Tài khoản</label>
-          <input class="w-full rounded glass-input border-none px-4 py-2.5 text-sm font-mono" id="admin-user" placeholder="admin" type="text"/>
-        </div>
-        <div class="space-y-1">
-          <label class="font-mono text-[10px] font-bold text-slate-600 uppercase" for="admin-pass">Mật khẩu</label>
-          <input class="w-full rounded glass-input border-none px-4 py-2.5 text-sm font-mono" id="admin-pass" placeholder="••••••••" type="password"/>
-        </div>
-        <button id="btn-admin-login-submit" class="btn-gold w-full py-3 rounded font-headline uppercase tracking-wider text-xs flex items-center justify-center gap-2 mt-4">
-          Xác thực quản trị <span class="material-symbols-outlined text-sm">shield</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- ==================== 6. VIEW ADMIN DASHBOARD ==================== -->
-    <section id="view-admin-dashboard" class="spa-view space-y-8">
-      
-      <!-- Admin Header -->
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-        <div class="space-y-2">
-          <h1 class="font-headline text-3xl font-black text-slate-900 uppercase tracking-tight flex items-center gap-2">
-            HỆ THỐNG QUẢN TRỊ <span class="text-xs font-mono font-bold bg-amber-400 text-slate-900 px-2 py-0.5 rounded">ADMIN MODE</span>
-          </h1>
-          <p class="text-slate-500 text-sm">
-            Quản lý cơ sở dữ liệu Operators, bảng xếp hạng khảo sát và ngân hàng đề thi.
-          </p>
-        </div>
-        
-        <button id="btn-admin-logout" class="btn-glass px-6 py-2.5 rounded text-xs font-bold text-red-600 hover:text-red-700 border border-red-200 uppercase tracking-wider">
-          Thoát Quản Trị
-        </button>
-      </div>
-
-      <!-- Admin Tabs Navigation -->
-      <div class="border-b border-slate-200/60 flex flex-wrap gap-2">
-        <button class="admin-tab-btn border-b-2 border-amber-500 text-slate-900 font-bold px-4 py-2.5 text-sm" data-tab="operators">
-          Danh sách Operators
-        </button>
-        <button class="admin-tab-btn border-b-2 border-transparent text-slate-500 font-medium hover:text-slate-800 px-4 py-2.5 text-sm" data-tab="leaderboard">
-          Bảng điểm & Xếp hạng
-        </button>
-        <button class="admin-tab-btn border-b-2 border-transparent text-slate-500 font-medium hover:text-slate-800 px-4 py-2.5 text-sm" data-tab="questions">
-          Ngân hàng Đề thi
-        </button>
-      </div>
-
-      <!-- Admin Tab Content: Operators -->
-      <div id="admin-tab-operators" class="admin-tab-content space-y-4">
-        <div class="flex justify-between items-center gap-4">
-          <h3 class="font-headline text-lg font-bold text-slate-800">Quản lý Operators</h3>
-          <input id="admin-search-operators" class="rounded glass-input border-none px-4 py-2 text-xs font-mono w-64" placeholder="Tìm kiếm Operator..." type="text"/>
-        </div>
-
-        <div class="glass-panel rounded-xl overflow-hidden">
-          <table class="w-full text-left border-collapse text-xs">
-            <thead>
-              <tr class="bg-white/30 border-b border-slate-200/50 text-slate-500 font-bold uppercase tracking-wider font-mono">
-                <th class="p-4">Tên Operator</th>
-                <th class="p-4">Email</th>
-                <th class="p-4">Số điện thoại</th>
-                <th class="p-4">Mã Operator</th>
-                <th class="p-4 text-center">Hành động</th>
-              </tr>
-            </thead>
-            <tbody id="admin-operators-rows" class="divide-y divide-slate-100/30">
-              <!-- Dynamically populated -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Admin Tab Content: Leaderboard -->
-      <div id="admin-tab-leaderboard" class="admin-tab-content hidden space-y-4">
-        <div class="flex justify-between items-center gap-4">
-          <h3 class="font-headline text-lg font-bold text-slate-800">Quản lý Kết quả Khảo sát</h3>
-          <input id="admin-search-leaderboard" class="rounded glass-input border-none px-4 py-2 text-xs font-mono w-64" placeholder="Tìm kiếm bài nộp..." type="text"/>
-        </div>
-
-        <div class="glass-panel rounded-xl overflow-hidden">
-          <table class="w-full text-left border-collapse text-xs">
-            <thead>
-              <tr class="bg-white/30 border-b border-slate-200/50 text-slate-500 font-bold uppercase tracking-wider font-mono">
-                <th class="p-4">Mã Operator</th>
-                <th class="p-4">Họ và Tên</th>
-                <th class="p-4">Độ Chính Xác</th>
-                <th class="p-4">Thời Gian</th>
-                <th class="p-4">Ngày thực hiện</th>
-                <th class="p-4 text-center">Hành động</th>
-              </tr>
-            </thead>
-            <tbody id="admin-leaderboard-rows" class="divide-y divide-slate-100/30">
-              <!-- Dynamically populated -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Admin Tab Content: Questions -->
-      <div id="admin-tab-questions" class="admin-tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <!-- Add/Edit Question Form -->
-        <div class="lg:col-span-5 glass-panel rounded-xl p-6 space-y-4 self-start">
-          <h3 id="admin-question-form-title" class="font-headline text-base font-bold text-slate-800 uppercase tracking-tight">Thêm Câu Hỏi Mới</h3>
-          
-          <form id="admin-form-question" class="space-y-3">
-            <input type="hidden" id="admin-question-id" />
             
+            <div class="flex flex-wrap gap-4 pt-2">
+              <button id="btn-home-start-quiz" class="btn-gold scanline-btn px-8 py-3.5 rounded-lg text-xs uppercase tracking-wider flex items-center gap-2">
+                <span class="material-symbols-outlined text-lg">crisis_alert</span> GIẢI MÃ CHUYÊN ÁN
+              </button>
+              <button id="btn-home-enlist" class="btn-glass px-8 py-3.5 rounded-lg text-xs uppercase tracking-wider flex items-center gap-2">
+                <span class="material-symbols-outlined text-lg">badge</span> ĐĂNG KÝ PHÙ HIỆU
+              </button>
+            </div>
+          </div>
+
+          <!-- Hero Board Graphic -->
+          <div class="lg:col-span-5 relative">
+            <div class="glass-panel folder-tab rounded-xl p-3 h-[320px] md:h-[380px] flex items-center justify-center overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-tr from-sky-500/10 to-emerald-500/10 mix-blend-overlay"></div>
+              <img alt="Bản đồ điều tra" class="w-full h-full object-cover rounded-lg opacity-85 contrast-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPet8DFtXnzcKRjwJjcDycQR5UdgIUzk4xtX2S7I_v1pnSiW41R0KI0MVEVnZbh0FeAoRJRFjciDGELWjLhsCA3B6T402J-tZr8IL3uOTXTGy495wRI8d21iayMPqry9zqQnJ4V4d_eXIpWr4lN-c76eUjp1Z1I7Hdk9FrnfPCshWB9uAP9rT5BLFilG9z6CCO2aW_wd3xXFPmU2uNF5AOtjcgcJtr1j14C3DwZxFYwW2kiNdnm5VAjPkfY3Xm2zUba8m48L5H4xg"/>
+              <div class="absolute top-6 right-6 font-mono text-right text-[10px] text-slate-500 tracking-wider">
+                <div>SYS: DECRYPTING</div>
+                <div>SECURE_CONN: YES</div>
+              </div>
+              <div class="absolute bottom-6 left-6 flex items-center gap-2 bg-white/60 px-3 py-1.5 rounded border border-white/80">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 led-glowing"></span>
+                <span class="font-mono text-[9px] text-slate-700 font-bold uppercase">CASE BOARD ACTIVE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Statistics Board -->
+        <div class="space-y-4">
+          <h3 class="font-headline text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span class="material-symbols-outlined text-sky-600">query_stats</span> Telemetry Mạng lưới Điều tra viên
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-panel rounded-xl p-5 flex items-center gap-4">
+              <div class="w-12 h-12 rounded bg-sky-100/50 flex items-center justify-center text-sky-600 border border-sky-200 flex-shrink-0">
+                <span class="material-symbols-outlined text-2xl">shield_person</span>
+              </div>
+              <div>
+                <div id="stat-total-operators" class="font-headline text-2xl font-extrabold text-slate-800">0</div>
+                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Thám tử danh tính</div>
+              </div>
+            </div>
+            <div class="glass-panel rounded-xl p-5 flex items-center gap-4">
+              <div class="w-12 h-12 rounded bg-emerald-100/50 flex items-center justify-center text-emerald-600 border border-emerald-200 flex-shrink-0">
+                <span class="material-symbols-outlined text-2xl">task_alt</span>
+              </div>
+              <div>
+                <div id="stat-total-submissions" class="font-headline text-2xl font-extrabold text-slate-800">0</div>
+                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Chuyên án giải mã</div>
+              </div>
+            </div>
+            <div class="glass-panel rounded-xl p-5 flex items-center gap-4">
+              <div class="w-12 h-12 rounded bg-amber-100/50 flex items-center justify-center text-amber-600 border border-amber-200 flex-shrink-0">
+                <span class="material-symbols-outlined text-2xl">troubleshoot</span>
+              </div>
+              <div>
+                <div id="stat-avg-accuracy" class="font-headline text-2xl font-extrabold text-slate-800">0%</div>
+                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Độ chính xác nghiệp vụ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About and Rules -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="glass-panel rounded-xl p-8 space-y-5">
+            <h3 class="font-headline text-xl font-bold text-slate-900 flex items-center gap-2">
+              <span class="material-symbols-outlined text-sky-600 text-2xl">quick_reference</span>
+              Nghiệp Vụ Điều Tra Thực Địa
+            </h3>
+            <p class="text-slate-600 text-xs leading-relaxed typewriter-text">
+              Để được công nhận phù hiệu Thám tử Danh dự, bạn sẽ giải mã **Chuyên án Đố Bạn Kì Tài** bao gồm 5 câu hỏi tình huống mô phỏng sự cố thực tế:
+            </p>
+            <ul class="space-y-2.5 font-body text-xs text-slate-600">
+              <li class="flex items-start gap-2">
+                <span class="material-symbols-outlined text-sky-600 text-sm mt-0.5">manage_search</span>
+                <span><strong>An toàn lưu thông đô thị:</strong> Điều phối, hướng dẫn, nhường đường xe khẩn cấp.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="material-symbols-outlined text-sky-600 text-sm mt-0.5">manage_search</span>
+                <span><strong>Ứng biến hoả hoạn:</strong> Thoát hiểm nhà cao tầng, thao tác bình chữa cháy cơ bản.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="material-symbols-outlined text-sky-600 text-sm mt-0.5">manage_search</span>
+                <span><strong>Sơ cứu thương tổn:</strong> Xử lý gãy xương đùi, ngạt thở CPR và đuối nước.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="glass-card rounded-xl p-6 flex flex-col justify-between">
+              <div class="space-y-1.5">
+                <div class="text-slate-800 font-headline font-bold flex items-center gap-1.5 text-xs">
+                  <span class="material-symbols-outlined text-base">query_builder</span> Quy tắc Tốc độ
+                </div>
+                <p class="text-[11px] text-slate-500 leading-relaxed">
+                  Đồng hồ bấm giờ sẽ ghi nhận tốc độ xử trí của bạn đến hàng phần nghìn giây. Tốc độ cao và đáp án chuẩn giúp bạn đạt cấp bậc cao nhất.
+                </p>
+              </div>
+              <div class="mt-4 text-[9px] font-mono text-slate-400">RESOLUTION: MILLISECONDS</div>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 flex flex-col justify-between">
+              <div class="space-y-1.5">
+                <div class="text-slate-800 font-headline font-bold flex items-center gap-1.5 text-xs">
+                  <span class="material-symbols-outlined text-base">folder_shared</span> Lưu trữ Phù hiệu
+                </div>
+                <p class="text-[11px] text-slate-500 leading-relaxed">
+                  Kết quả sau khi hoàn thành sẽ được phân tích, chấm điểm và lưu trữ bảo mật trên bảng xếp hạng Thám tử Thành Phố.
+                </p>
+              </div>
+              <div class="mt-4 text-[9px] font-mono text-slate-400">SECURE: GOOGLE_FIRESTORE</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== GUEST: VIEW REGISTER ==================== -->
+      <section id="view-register" class="spa-view space-y-8 max-w-md mx-auto">
+        <div class="text-center">
+          <h2 class="font-headline text-3xl font-black text-slate-900 tracking-tight uppercase">ĐĂNG KÝ HỒ SƠ THÁM TỬ</h2>
+          <p class="font-mono text-[10px] text-slate-500 tracking-widest uppercase mt-1">
+            Detective Enlistment Protocol
+          </p>
+        </div>
+
+        <div class="glass-panel rounded-xl p-8 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-slate-400/50"></div>
+          <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-slate-400/50"></div>
+          <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-slate-400/50"></div>
+          <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-slate-400/50"></div>
+
+          <!-- Protocol Warning -->
+          <div class="bg-white/60 border border-white/80 rounded p-4 mb-6 flex items-start gap-3 shadow-inner">
+            <span class="material-symbols-outlined text-sky-600 mt-0.5">info</span>
+            <div>
+              <h4 class="font-mono text-[9px] font-extrabold text-slate-800 uppercase tracking-widest">Ủy quyền danh tính</h4>
+              <p class="text-[10px] text-slate-500 mt-1 leading-relaxed">
+                Hệ thống yêu cầu xác minh thông tin liên lạc chính xác để cấp Phù hiệu Thám tử đô thị của CLB Tình nguyện Vì Bình Yên Thành Phố.
+              </p>
+            </div>
+          </div>
+
+          <form id="form-registration" class="space-y-4">
+            <!-- Name Input -->
             <div class="space-y-1">
-              <label class="font-mono text-[10px] text-slate-500 uppercase font-bold" for="q-text">Tiêu đề câu hỏi</label>
-              <textarea class="w-full rounded glass-input border-none px-3 py-2 text-xs" id="q-text" rows="3" placeholder="Nhập câu hỏi nghiệp vụ..." required></textarea>
+              <label class="font-mono text-[10px] font-bold text-slate-600 uppercase tracking-wider flex justify-between" for="reg-name">
+                <span>Họ tên Điều tra viên</span>
+                <span class="text-red-500 hidden text-[9px] uppercase tracking-wider" id="reg-name-error">Bắt buộc</span>
+              </label>
+              <div class="relative glass-input-wrapper">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-base">person</span>
+                <input class="w-full rounded glass-input border-none pl-10 pr-4 py-2.5 text-sm font-headline" id="reg-name" placeholder="NGUYỄN VĂN A" required type="text"/>
+              </div>
             </div>
 
+            <!-- Email Input -->
             <div class="space-y-1">
-              <label class="font-mono text-[10px] text-slate-500 uppercase font-bold" for="q-desc">Mô tả tình huống / Gợi ý</label>
-              <input class="w-full rounded glass-input border-none px-3 py-2 text-xs" id="q-desc" placeholder="Gợi ý chi tiết thêm..." required type="text"/>
-            </div>
-
-            <div class="space-y-1.5 pt-2">
-              <label class="font-mono text-[10px] text-slate-500 uppercase font-bold">Các phương án trả lời</label>
-              
-              <div class="flex gap-2 items-center">
-                <span class="font-bold text-xs text-slate-500 font-mono">A</span>
-                <input class="w-full rounded glass-input border-none px-3 py-1.5 text-xs" id="q-opt-A" placeholder="Phương án A" required type="text"/>
-              </div>
-              <div class="flex gap-2 items-center">
-                <span class="font-bold text-xs text-slate-500 font-mono">B</span>
-                <input class="w-full rounded glass-input border-none px-3 py-1.5 text-xs" id="q-opt-B" placeholder="Phương án B" required type="text"/>
-              </div>
-              <div class="flex gap-2 items-center">
-                <span class="font-bold text-xs text-slate-500 font-mono">C</span>
-                <input class="w-full rounded glass-input border-none px-3 py-1.5 text-xs" id="q-opt-C" placeholder="Phương án C" required type="text"/>
-              </div>
-              <div class="flex gap-2 items-center">
-                <span class="font-bold text-xs text-slate-500 font-mono">D</span>
-                <input class="w-full rounded glass-input border-none px-3 py-1.5 text-xs" id="q-opt-D" placeholder="Phương án D" required type="text"/>
+              <label class="font-mono text-[10px] font-bold text-slate-600 uppercase tracking-wider flex justify-between" for="reg-email">
+                <span>Email Liên lạc</span>
+                <span class="text-red-500 hidden text-[9px] uppercase tracking-wider" id="reg-email-error">Không hợp lệ</span>
+              </label>
+              <div class="relative glass-input-wrapper">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-base">mail</span>
+                <input class="w-full rounded glass-input border-none pl-10 pr-4 py-2.5 text-sm font-mono" id="reg-email" placeholder="THAMTU@DOMAIN.COM" required type="email"/>
               </div>
             </div>
 
-            <div class="space-y-1 pt-2">
-              <label class="font-mono text-[10px] text-slate-500 uppercase font-bold" for="q-correct">Đáp án đúng</label>
-              <select class="w-full rounded glass-input border-none px-3 py-2 text-xs font-mono" id="q-correct">
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-              </select>
+            <!-- Phone Input -->
+            <div class="space-y-1">
+              <label class="font-mono text-[10px] font-bold text-slate-600 uppercase tracking-wider flex justify-between" for="reg-phone">
+                <span>Số điện thoại bảo mật</span>
+                <span class="text-red-500 hidden text-[9px] uppercase tracking-wider" id="reg-phone-error">Không hợp lệ</span>
+              </label>
+              <div class="relative glass-input-wrapper">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-base">phone_iphone</span>
+                <input class="w-full rounded glass-input border-none pl-10 pr-4 py-2.5 text-sm font-mono" id="reg-phone" placeholder="0901234567" required type="tel"/>
+              </div>
             </div>
 
-            <div class="flex gap-2 pt-4">
-              <button id="btn-question-save" class="btn-gold flex-1 py-2.5 rounded text-xs uppercase font-bold tracking-wider" type="submit">Lưu câu hỏi</button>
-              <button id="btn-question-cancel" class="btn-glass px-4 py-2.5 rounded text-xs uppercase font-semibold tracking-wider hidden" type="button">Hủy</button>
-            </div>
+            <button class="btn-gold w-full mt-6 py-3.5 rounded font-headline uppercase tracking-wider text-xs flex items-center justify-center gap-2" type="submit">
+              <span>Nhận Phù Hiệu & Đăng Nhập</span>
+              <span class="material-symbols-outlined font-bold text-base">shield</span>
+            </button>
           </form>
         </div>
+      </section>
 
-        <!-- Question List -->
-        <div class="lg:col-span-7 space-y-4">
-          <h3 class="font-headline text-lg font-bold text-slate-800">Danh sách câu hỏi hiện tại</h3>
-          <div id="admin-questions-list" class="space-y-3">
-            <!-- Dynamically populated -->
+      <!-- ==================== GUEST: VIEW QUIZ ==================== -->
+      <section id="view-quiz" class="spa-view space-y-8">
+        
+        <!-- Quiz State: Pre-Start -->
+        <div id="quiz-pre-start" class="max-w-xl mx-auto space-y-6 text-center">
+          <div class="w-20 h-20 mx-auto rounded-full bg-sky-50 flex items-center justify-center border border-sky-200 shadow-md text-sky-600">
+            <span class="material-symbols-outlined text-4xl">folder_zip</span>
+          </div>
+          <div class="space-y-2">
+            <h2 class="font-headline text-3xl font-black text-slate-900 tracking-tight">KÍCH HOẠT QUY TRÌNH GIẢI MÃ CHUYÊN ÁN</h2>
+            <p class="text-slate-500 text-sm max-w-sm mx-auto">
+              Nhấn bắt đầu để mở tệp hồ sơ chuyên án an toàn đô thị. Thời gian giải quyết sẽ tính trực tiếp vào bảng vàng thành tích.
+            </p>
+          </div>
+
+          <div class="glass-panel p-6 rounded-xl text-left space-y-3 max-w-md mx-auto text-xs text-slate-600">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-base text-sky-500">check_circle</span>
+              <span>Đọc kỹ chi tiết tình huống được ghi nhận trong hồ sơ chuyên án.</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-base text-red-500">hourglass_empty</span>
+              <span>Hệ thống ghi nhận thời gian chuẩn từng phần nghìn giây.</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-base text-emerald-500">cloud_done</span>
+              <span>Dữ liệu giải mã sẽ tự động nạp lên cơ sở dữ liệu chung.</span>
+            </div>
+          </div>
+
+          <button id="btn-quiz-initiate" class="btn-gold px-10 py-4 rounded font-headline uppercase tracking-widest text-xs inline-flex items-center gap-2">
+            <span class="material-symbols-outlined">key</span> MỞ HỒ SƠ CHUYÊN ÁN
+          </button>
+        </div>
+
+        <!-- Quiz State: Live Quiz Arena -->
+        <div id="quiz-arena" class="hidden space-y-8 max-w-4xl mx-auto">
+          <!-- Live HUD Status -->
+          <header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 glass-panel p-6 rounded-xl">
+            <div class="flex-grow w-full">
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="font-headline text-lg font-bold text-slate-800 uppercase tracking-tight flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-sky-600">clinical_trial</span> GIẢI MÃ CHUYÊN ÁN
+                </h3>
+                <span id="quiz-progress-text" class="font-mono text-xs font-semibold text-slate-500">Q_01 / 05</span>
+              </div>
+              <div class="w-full bg-slate-200/50 h-2.5 rounded-full overflow-hidden border border-slate-300/30 relative">
+                <div id="quiz-progress-bar" class="bg-sky-500 h-full transition-all duration-300 ease-out" style="width: 20%;"></div>
+              </div>
+            </div>
+            
+            <!-- Live Timer -->
+            <div class="flex flex-col items-end border border-white/60 bg-white/50 px-6 py-2 rounded-lg w-full md:w-auto shadow-inner">
+              <span class="font-mono text-[9px] font-bold tracking-widest text-slate-400">DECRYPT TIME</span>
+              <div class="font-mono text-lg font-semibold tracking-wider text-slate-700 flex items-center gap-2">
+                <span class="material-symbols-outlined text-base">timer</span>
+                <span id="quiz-live-timer">00:00:000</span>
+              </div>
+            </div>
+          </header>
+
+          <!-- Question Area -->
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/60 border border-slate-200 shadow-sm rounded">
+              <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+              <span class="font-mono text-[9px] font-bold tracking-widest text-slate-600 uppercase">CASE_DEC_PROTOCOL: ACTIVE</span>
+            </div>
+            <h2 id="quiz-question-title" class="font-headline text-2xl md:text-3xl font-extrabold text-slate-800 leading-tight">
+              Loading dossier...
+            </h2>
+            <p id="quiz-question-desc" class="text-slate-500 text-xs">
+              Analyzing municipal database logs...
+            </p>
+          </div>
+
+          <!-- Options Container -->
+          <div id="quiz-options-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+            <!-- Injected dynamically -->
+          </div>
+
+          <!-- Actions -->
+          <div class="flex justify-end pt-4">
+            <button id="btn-quiz-next" class="btn-gold px-8 py-3.5 rounded font-headline uppercase tracking-wider text-xs flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+              <span>Xác nhận lời giải</span> <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz State: Quiz Finished -->
+        <div id="quiz-finished" class="hidden max-w-xl mx-auto space-y-8 text-center">
+          <div class="w-20 h-20 mx-auto rounded-full bg-emerald-50 flex items-center justify-center border border-emerald-200 shadow-md text-emerald-600">
+            <span class="material-symbols-outlined text-4xl">verified_user</span>
+          </div>
+          
+          <div class="space-y-2">
+            <h2 class="font-headline text-3xl font-black text-slate-900 tracking-tight uppercase">CHUYÊN ÁN ĐÃ GIẢI MÃ</h2>
+            <p class="text-slate-500 text-xs">Thông tin giải mã của bạn đã được đối soát trên cơ sở dữ liệu.</p>
+          </div>
+
+          <!-- Results Card -->
+          <div class="glass-panel p-8 rounded-xl space-y-6">
+            <div class="grid grid-cols-2 gap-4 divide-x divide-slate-200/50">
+              <div class="space-y-1">
+                <span class="font-mono text-[9px] text-slate-400 uppercase tracking-widest">Độ Chính Xác</span>
+                <div id="result-accuracy" class="font-headline text-3xl font-black text-slate-800">0%</div>
+              </div>
+              <div class="space-y-1">
+                <span class="font-mono text-[9px] text-slate-400 uppercase tracking-widest">Thời gian mã hóa</span>
+                <div id="result-time" class="font-mono text-lg font-bold text-slate-800 pt-1">00:00.000</div>
+              </div>
+            </div>
+
+            <div class="bg-white/40 border border-white/60 rounded p-4 text-left text-[11px] text-slate-500 leading-relaxed font-body">
+              Chỉ số nghiệp vụ của bạn đã đồng bộ vào Bảng xếp hạng Thám tử Thành Phố. Hãy theo dõi vị trí thứ hạng của mình tại chuyên mục xếp hạng.
+            </div>
+          </div>
+
+          <div class="flex justify-center gap-4">
+            <button id="btn-quiz-view-rankings" class="btn-gold px-8 py-3.5 rounded text-xs uppercase tracking-wider font-semibold">
+              Bảng xếp hạng Thám tử
+            </button>
+            <button id="btn-quiz-retry" class="btn-glass px-8 py-3.5 rounded text-xs uppercase tracking-wider font-semibold">
+              Giải lại Chuyên án
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== GUEST: VIEW LEADERBOARD ==================== -->
+      <section id="view-leaderboard" class="spa-view space-y-8">
+        <!-- Leaderboard Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div class="space-y-2">
+            <h1 class="font-headline text-3xl font-extrabold text-slate-950 tracking-tight uppercase">Bảng Vàng Thám Tử</h1>
+            <p class="text-slate-500 text-xs max-w-xl">
+              Xếp hạng hiệu suất nghiệp vụ giải mã của các điều tra viên đô thị. Top đầu sẽ nhận danh hiệu Thám tử Đại tài của CLB.
+            </p>
+          </div>
+          
+          <!-- Search bar -->
+          <div class="w-full md:w-80 relative">
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400">search</span>
+            <input id="leaderboard-search" class="w-full rounded glass-input border-none pl-10 pr-4 py-3 text-xs font-mono placeholder-slate-400 shadow-inner" placeholder="Tìm Badge ID hoặc tên thám tử..." type="text"/>
+          </div>
+        </div>
+
+        <!-- Leaderboard Table -->
+        <div class="glass-panel rounded-xl overflow-hidden">
+          <!-- Table Header -->
+          <div class="grid grid-cols-12 gap-4 px-6 py-4 bg-white/40 border-b border-slate-200/50 font-mono text-[10px] font-bold text-slate-500 tracking-wider">
+            <div class="col-span-2 md:col-span-1 text-center">RANK</div>
+            <div class="col-span-6 md:col-span-5">MÃ PHÙ HIỆU / THÁM TỬ</div>
+            <div class="col-span-4 md:col-span-3 text-right">ĐỘ CHÍNH XÁC</div>
+            <div class="hidden md:block md:col-span-3 text-right">THỜI GIAN GIẢI MÃ</div>
+          </div>
+
+          <!-- Table Container -->
+          <div id="leaderboard-rows" class="divide-y divide-slate-100/50">
+            <div class="py-12 text-center text-slate-400 font-mono text-xs">Đang tải bảng vàng...</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== GUEST: VIEW ADMIN LOGIN ==================== -->
+      <section id="view-admin-login" class="spa-view max-w-sm mx-auto space-y-6">
+        <div class="text-center space-y-1">
+          <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center border border-slate-200 mx-auto text-slate-700 shadow-sm mb-2">
+            <span class="material-symbols-outlined">admin_panel_settings</span>
+          </div>
+          <h2 class="font-headline text-2xl font-black text-slate-900 uppercase">CỔNG XÁC THỰC QUẢN TRỊ</h2>
+          <p class="font-mono text-[9px] text-slate-500 tracking-widest uppercase">Admin clearance level required</p>
+        </div>
+
+        <div class="glass-panel p-8 rounded-xl space-y-4">
+          <div class="space-y-1">
+            <label class="font-mono text-[10px] font-bold text-slate-600 uppercase" for="admin-user">Tài khoản</label>
+            <input class="w-full rounded glass-input border-none px-4 py-2.5 text-sm font-mono" id="admin-user" placeholder="admin" type="text"/>
+          </div>
+          <div class="space-y-1">
+            <label class="font-mono text-[10px] font-bold text-slate-600 uppercase" for="admin-pass">Mật khẩu</label>
+            <input class="w-full rounded glass-input border-none px-4 py-2.5 text-sm font-mono" id="admin-pass" placeholder="••••••••" type="password"/>
+          </div>
+          <button id="btn-admin-login-submit" class="btn-gold w-full py-3 rounded font-headline uppercase tracking-wider text-xs flex items-center justify-center gap-2 mt-4">
+            Đăng nhập hệ thống <span class="material-symbols-outlined text-sm">shield</span>
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+  <!-- ==================== END OF GUEST LAYOUT ==================== -->
+
+
+  <!-- ==================== WORKSPACE: VIEW ADMIN DASHBOARD ==================== -->
+  <div id="admin-workspace" class="hidden min-h-screen flex flex-col md:flex-row bg-slate-900 text-slate-100 font-body">
+    
+    <!-- Admin Sidebar -->
+    <aside class="w-full md:w-64 admin-sidebar flex flex-col p-6 space-y-8 flex-shrink-0">
+      <!-- Title -->
+      <div>
+        <div class="font-headline text-xl font-black tracking-tighter text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-amber-400">admin_panel_settings</span> P.A.S.T COMMAND
+        </div>
+        <p class="text-[9px] text-slate-400 font-mono tracking-widest mt-1">ADMINISTRATIVE HUB</p>
+      </div>
+
+      <!-- Admin Nav Links -->
+      <nav class="flex-grow flex flex-col gap-2">
+        <button class="admin-tab-btn admin-nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-left text-xs font-headline font-bold uppercase tracking-wider active" data-tab="operators">
+          <span class="material-symbols-outlined text-base">shield_person</span> Danh sách Thám tử
+        </button>
+        <button class="admin-tab-btn admin-nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-left text-xs font-headline font-bold uppercase tracking-wider" data-tab="leaderboard">
+          <span class="material-symbols-outlined text-base">clinical_trial</span> Báo cáo Chuyên án
+        </button>
+        <button class="admin-tab-btn admin-nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-left text-xs font-headline font-bold uppercase tracking-wider" data-tab="questions">
+          <span class="material-symbols-outlined text-base">folder_zip</span> Ngân hàng Đề thi
+        </button>
+      </nav>
+
+      <!-- Admin Actions -->
+      <div class="space-y-3 pt-6 border-t border-slate-800">
+        <div class="text-[10px] text-slate-500 font-mono">SYS_CLEAN: ROOT</div>
+        <button id="btn-admin-logout" class="w-full py-2.5 bg-red-900/40 hover:bg-red-900/60 text-red-200 border border-red-800/80 font-headline font-bold rounded-lg transition-all tracking-wider text-xs flex items-center justify-center gap-1.5 uppercase">
+          <span class="material-symbols-outlined text-sm">power_settings_new</span> ĐĂNG XUẤT
+        </button>
+      </div>
+    </aside>
+
+    <!-- Admin Content Area -->
+    <main class="flex-grow p-6 md:p-10 overflow-y-auto space-y-8 bg-slate-950">
+      
+      <!-- Section: Operators Tab -->
+      <div id="admin-tab-operators" class="admin-tab-content space-y-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-4">
+          <div>
+            <h2 class="font-headline text-2xl font-black text-white uppercase tracking-tight">Hồ sơ Điều tra viên</h2>
+            <p class="text-xs text-slate-400">Danh sách toàn bộ thám tử tình nguyện đăng ký nhận phù hiệu.</p>
+          </div>
+          <input id="admin-search-operators" class="rounded bg-slate-900 border-slate-800 text-white placeholder-slate-500 focus:border-amber-400 focus:ring-0 px-4 py-2.5 text-xs font-mono w-64 shadow-inner" placeholder="Tìm kiếm thám tử..." type="text"/>
+        </div>
+
+        <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-x-auto shadow-lg">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-slate-900 border-b border-slate-800 text-slate-400 font-bold uppercase tracking-wider font-mono">
+                <th class="p-4">Họ và Tên</th>
+                <th class="p-4">Email liên lạc</th>
+                <th class="p-4">Số điện thoại</th>
+                <th class="p-4">Badge ID</th>
+                <th class="p-4 text-center">Xóa hồ sơ</th>
+              </tr>
+            </thead>
+            <tbody id="admin-operators-rows" class="divide-y divide-slate-800/40">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Section: Leaderboard/Submissions Tab -->
+      <div id="admin-tab-leaderboard" class="admin-tab-content hidden space-y-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-4">
+          <div>
+            <h2 class="font-headline text-2xl font-black text-white uppercase tracking-tight">Báo cáo Giải mã Chuyên án</h2>
+            <p class="text-xs text-slate-400">Nhật ký giải đề thi trắc nghiệm nghiệp vụ của thám tử.</p>
+          </div>
+          <input id="admin-search-leaderboard" class="rounded bg-slate-900 border-slate-800 text-white placeholder-slate-500 focus:border-amber-400 focus:ring-0 px-4 py-2.5 text-xs font-mono w-64 shadow-inner" placeholder="Tìm kiếm bài nộp..." type="text"/>
+        </div>
+
+        <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-x-auto shadow-lg">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-slate-900 border-b border-slate-800 text-slate-400 font-bold uppercase tracking-wider font-mono">
+                <th class="p-4">Badge ID</th>
+                <th class="p-4">Tên thám tử</th>
+                <th class="p-4">Độ chính xác</th>
+                <th class="p-4">Thời gian</th>
+                <th class="p-4">Ngày nộp</th>
+                <th class="p-4 text-center">Xóa kết quả</th>
+              </tr>
+            </thead>
+            <tbody id="admin-leaderboard-rows" class="divide-y divide-slate-800/40">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Section: Questions Tab -->
+      <div id="admin-tab-questions" class="admin-tab-content hidden space-y-6">
+        <div class="border-b border-slate-800 pb-4">
+          <h2 class="font-headline text-2xl font-black text-white uppercase tracking-tight">Kho tài liệu Chuyên án</h2>
+          <p class="text-xs text-slate-400">Quản lý câu hỏi kiểm tra nghiệp vụ an ninh đô thị.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Question Form -->
+          <div class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-4 self-start shadow-lg">
+            <h3 id="admin-question-form-title" class="font-headline text-sm font-bold text-white uppercase tracking-wider">Thêm Câu Hỏi Mới</h3>
+            
+            <form id="admin-form-question" class="space-y-4">
+              <input type="hidden" id="admin-question-id" />
+              
+              <div class="space-y-1">
+                <label class="font-mono text-[9px] text-slate-400 uppercase font-bold" for="q-text">Nội dung câu hỏi</label>
+                <textarea class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-2 text-xs" id="q-text" rows="3" placeholder="Nhập câu hỏi nghiệp vụ..." required></textarea>
+              </div>
+
+              <div class="space-y-1">
+                <label class="font-mono text-[9px] text-slate-400 uppercase font-bold" for="q-desc">Mô tả tình huống / Gợi ý</label>
+                <input class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-2 text-xs" id="q-desc" placeholder="Nhập gợi ý cho câu hỏi..." required type="text"/>
+              </div>
+
+              <div class="space-y-2 pt-2 border-t border-slate-800">
+                <label class="font-mono text-[9px] text-slate-400 uppercase font-bold">Các phương án trả lời</label>
+                
+                <div class="flex gap-2 items-center">
+                  <span class="font-bold text-xs text-slate-500 font-mono">A</span>
+                  <input class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-1.5 text-xs" id="q-opt-A" placeholder="Phương án A" required type="text"/>
+                </div>
+                <div class="flex gap-2 items-center">
+                  <span class="font-bold text-xs text-slate-500 font-mono">B</span>
+                  <input class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-1.5 text-xs" id="q-opt-B" placeholder="Phương án B" required type="text"/>
+                </div>
+                <div class="flex gap-2 items-center">
+                  <span class="font-bold text-xs text-slate-500 font-mono">C</span>
+                  <input class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-1.5 text-xs" id="q-opt-C" placeholder="Phương án C" required type="text"/>
+                </div>
+                <div class="flex gap-2 items-center">
+                  <span class="font-bold text-xs text-slate-500 font-mono">D</span>
+                  <input class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-1.5 text-xs" id="q-opt-D" placeholder="Phương án D" required type="text"/>
+                </div>
+              </div>
+
+              <div class="space-y-1 pt-2 border-t border-slate-800">
+                <label class="font-mono text-[9px] text-slate-400 uppercase font-bold" for="q-correct">Đáp án đúng</label>
+                <select class="w-full rounded bg-slate-950 border-slate-850 text-white focus:border-amber-400 focus:ring-0 px-3 py-2 text-xs font-mono" id="q-correct">
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                </select>
+              </div>
+
+              <div class="flex gap-2 pt-4">
+                <button id="btn-question-save" class="btn-gold flex-1 py-2.5 rounded text-xs uppercase font-bold tracking-wider" type="submit">Lưu câu hỏi</button>
+                <button id="btn-question-cancel" class="btn-glass px-4 py-2.5 rounded text-xs uppercase font-semibold tracking-wider text-slate-300 hidden" type="button">Hủy</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Question List -->
+          <div class="lg:col-span-7 space-y-4">
+            <h3 class="font-headline text-lg font-bold text-white uppercase tracking-tight">Bộ câu hỏi hiện thời</h3>
+            <div id="admin-questions-list" class="space-y-4">
+              <!-- Populated dynamically -->
+            </div>
           </div>
         </div>
       </div>
 
-    </section>
+    </main>
 
-  </main>
+  </div>
+  <!-- ==================== END OF ADMIN WORKSPACE ==================== -->
+
 
   <!-- Global Toast Notification Container -->
   <div id="toast" class="toast-notification">
-    <span id="toast-icon" class="material-symbols-outlined text-amber-500">info</span>
-    <div id="toast-text" class="text-xs font-headline font-bold text-slate-800">Thông báo từ hệ thống</div>
+    <span id="toast-icon" class="material-symbols-outlined text-sky-600">info</span>
+    <div id="toast-text" class="text-xs font-headline font-bold text-slate-800">Thông báo điều tra</div>
   </div>
 
   <!-- Firebase Core JS SDK (v10 Compat) -->
